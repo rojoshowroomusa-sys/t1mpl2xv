@@ -1,0 +1,10 @@
+# Cloudflare Wrangler – caché y estado local
+.wrangler/
+
+# Agentes locales
+.CLAUDE/
+.remember/
+
+# Sistema
+.DS_Store
+Thumbs.db
