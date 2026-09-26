@@ -1,236 +1,803 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>TEMPLE — El carácter se forja (Athletic Premium)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=Archivo+Black&display=swap" rel="stylesheet" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js')</script>
+
+<title>TEMPLE — El carácter se forja</title>
+<meta name="description" content="El carácter se forja. Polo, hoodie, campera y accesorios de rugby. Diseñado para el rugby, hecho para durar. Pedí por WhatsApp. Argentina.">
+<meta name="theme-color" content="#faf9f6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141311" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:title" content="TEMPLE — El carácter se forja">
+<meta property="og:description" content="Ropa y objetos para los que juegan al rugby. Polo, hoodie, campera y accesorios. Pedí por WhatsApp.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=75&auto=format&fit=crop&w=1200">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%236e2e24'/%3E%3Ctext x='32' y='47' text-anchor='middle' font-family='Verdana,Arial' font-size='42' font-weight='700' fill='%23faf9f6'%3ET%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
+/* ─────────────────────────────────────────────
+   Tokens
+   ───────────────────────────────────────────── */
 :root{
-  --base:#faf9f6; --surface:#f0ede8;
-  --ink:#141311; --ink-dim:#6a6560;
-  --accent:#6e2e24; --accent-vivid:#8b1a1a;
-  --border:#ddd9d0; --shadow:rgba(20,19,17,.10);
-  --shadow-hover:rgba(20,19,17,.18);
-  --font-body:'Inter',system-ui,sans-serif;
+  --base:#faf9f6;
+  --surface:#f0ede8;
+  --ink:#141311;
+  --ink-dim:#6a6560;
+  --line:#ddd9d0;
+
+  --accent:#6e2e24;
+  --accent-hi:#8b1a1a;
+  --on-accent:#faf9f6;
+
+  --glass:rgba(250,249,246,.88);
+
+  --footer-bg:#141210;
+  --footer-ink:#cfc9c2;
+  --footer-dim:#8f8880;
+  --footer-line:#302c28;
+
+  --font-body:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
   --font-display:'Archivo Black',system-ui,sans-serif;
 }
-@media (prefers-color-scheme: dark){
-  :root{--base:#141311; --surface:#1c1b19; --ink:#faf9f6; --ink-dim:#b8b5b0; --border:#3a3835; --shadow:rgba(0,0,0,.35); --shadow-hover:rgba(0,0,0,.55);}
+@media (prefers-color-scheme:dark){
+  :root{
+    --base:#141311;
+    --surface:#1c1b19;
+    --ink:#f5f3ef;
+    --ink-dim:#a8a29b;
+    --line:#37332f;
+
+    --accent:#dd8873;
+    --accent-hi:#f0a491;
+    --on-accent:#17130f;
+
+    --glass:rgba(20,19,17,.88);
+
+    --footer-bg:#0e0d0c;
+    --footer-ink:#cfc9c2;
+    --footer-dim:#8f8880;
+    --footer-line:#2a2724;
+  }
 }
-*{box-sizing:border-box;margin:0;padding:0}
-img{display:block;width:100%;height:auto;object-fit:cover}
-html{scroll-behavior:smooth}
-body{font-family:var(--font-body);background:var(--base);color:var(--ink);line-height:1.45;letter-spacing:-.01em}
+
+/* ─────────────────────────────────────────────
+   Base
+   ───────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box}
+
+html{
+  -webkit-text-size-adjust:100%;
+  scroll-behavior:smooth;
+  scrollbar-width:thin;
+  scrollbar-color:var(--ink-dim) var(--base);
+}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:var(--base)}
+::-webkit-scrollbar-thumb{background:var(--ink-dim);border:3px solid var(--base);border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+
+body{
+  margin:0;
+  background:var(--base);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:1rem;
+  line-height:1.5;
+  letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  caret-color:var(--accent);
+}
+::selection{background:var(--accent);color:var(--on-accent)}
+
+img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 
-/* Nav */
-.nav{position:sticky;top:0;z-index:50;background:rgba(250,249,246,.92);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;font-family:var(--font-display);font-size:.85rem;text-transform:uppercase;letter-spacing:.08em}
-.nav a:hover{color:var(--accent)}
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  font-weight:400;
+  letter-spacing:-.03em;
+  text-wrap:balance;
+  margin:0;
+}
 
-/* Hero */
-.hero{position:relative;height:92vh;min-height:580px;overflow:hidden;background:#0d0b09}
-.hero img,.hero .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92}
-.hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,11,9,.25) 0%,rgba(13,11,9,.55) 70%,rgba(13,11,9,.85) 100%)}
-.hero-inner{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;justify-content:flex-end;padding:6rem 2rem 4rem;max-width:1200px;margin:0 auto;width:100%}
-.hero h1{font-family:var(--font-display);font-size:clamp(9vw,12rem,14rem);line-height:.82;letter-spacing:-.06em;color:#fff;margin-bottom:.6rem;text-shadow:0 30px 80px rgba(0,0,0,.35)}
-.hero h1 span{display:block;color:#e8d5c4}
-.hero p{font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.35;color:#ddd5cf;max-width:42ch;margin-bottom:2rem}
-.hero .cta{display:inline-block;padding:.75rem 2rem;background:var(--accent);color:#fff;font-weight:800;font-family:var(--font-display);font-size:.9rem;letter-spacing:.06em;border-radius:.5rem;transition:background .2s}
-.hero .cta:hover{background:var(--accent-vivid)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+.hero :focus-visible{outline-color:#fff}
 
-/* Sections */
-.container{max-width:1200px;margin:0 auto;padding:0 2rem}
-.section-label{font-family:var(--font-display);font-size:.85rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:.75rem}
+.wrap{width:100%;max-width:1200px;margin-inline:auto;padding:0 2rem}
 
-/* Catalog */
-.catalog{padding:6rem 0 8rem}
-.catalog-header{display:flex;align-items:end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
-.catalog h2{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4rem);line-height:.9;letter-spacing:-.03em}
-.catalog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2rem}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:1rem;overflow:hidden;transition:box-shadow .25s,transform .25s}
-.card:hover{box-shadow:0 16px 40px var(--shadow-hover);transform:translateY(-4px)}
-.card-img{aspect-ratio:4/5;overflow:hidden;background:#ddd9d0;position:relative}
-.card-img img{transition:transform .4s}
-.card:hover .card-img img{transform:scale(1.03)}
-.card-body{padding:1.25rem 1.25rem 1.5rem}
-.card h3{font-family:var(--font-display);font-size:1.15rem;letter-spacing:-.01em;margin-bottom:.25rem}
-.card .para{color:var(--ink-dim);font-size:.95rem;line-height:1.35;margin-bottom:.75rem}
-.card .price{font-weight:800;font-size:1.05rem;margin-bottom:.5rem;color:var(--ink)}
-.card .cta-sm{display:inline-block;padding:.45rem 1rem;border:2px solid var(--ink);border-radius:.4rem;font-weight:700;font-size:.85rem;transition:background .2s,color .2s}
-.card .cta-sm:hover{background:var(--ink);color:#fff}
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0;
+}
+.skip{
+  position:fixed;left:1rem;top:-120px;z-index:200;
+  background:var(--accent);color:var(--on-accent);
+  padding:.75rem 1.15rem;border-radius:.45rem;
+  font-weight:700;font-size:.9rem;letter-spacing:0;
+  transition:top .18s ease;
+}
+.skip:focus{top:1rem}
+
+/* ─────────────────────────────────────────────
+   Nav
+   ───────────────────────────────────────────── */
+.nav{
+  position:sticky;top:0;z-index:60;
+  background:var(--glass);
+  -webkit-backdrop-filter:saturate(150%) blur(14px);
+  backdrop-filter:saturate(150%) blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:clamp(1rem,3vw,2.5rem);min-height:4rem;padding-block:.7rem;
+}
+.nav-brand{
+  font-family:var(--font-display);font-size:.95rem;
+  text-transform:uppercase;letter-spacing:.16em;
+}
+.nav-brand:hover{color:var(--accent)}
+.nav-links{
+  display:flex;align-items:center;
+  gap:clamp(1.25rem,3vw,2.25rem);
+  list-style:none;margin:0;padding:0;
+}
+.nav-links a{
+  display:block;padding-block:.4rem;
+  font-family:var(--font-display);font-size:.74rem;
+  text-transform:uppercase;letter-spacing:.11em;
+  border-bottom:2px solid transparent;
+  transition:color .2s,border-color .2s;
+}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a[aria-current]{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* ─────────────────────────────────────────────
+   Buttons
+   ───────────────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  gap:.5rem;padding:.85rem 1.7rem;
+  font-family:var(--font-display);font-size:.78rem;
+  text-transform:uppercase;letter-spacing:.09em;
+  border:1.5px solid transparent;border-radius:.5rem;
+  text-align:center;cursor:pointer;
+  transition:background-color .2s,color .2s,border-color .2s,transform .15s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+
+.btn-solid{background:var(--accent);color:var(--on-accent)}
+.btn-solid:hover{background:var(--accent-hi)}
+
+.btn-cream{background:#faf9f6;color:#141311;border-color:#faf9f6}
+.btn-cream:hover{background:#e8d5c4;border-color:#e8d5c4}
+
+.btn-ghost{border-color:rgba(255,255,255,.55);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.14);border-color:#fff}
+
+.btn-sm{padding:.6rem 1.15rem;font-size:.72rem;letter-spacing:.1em}
+.btn-lg{padding:1.05rem 2.3rem;font-size:.84rem}
+
+/* ─────────────────────────────────────────────
+   Hero
+   ───────────────────────────────────────────── */
+.hero{
+  position:relative;isolation:isolate;
+  display:flex;align-items:flex-end;
+  min-height:92vh;min-height:92svh;
+  overflow:hidden;background:#0d0b09;color:#fff;
+  scroll-margin-top:4.5rem;
+}
+.hero-img{
+  position:absolute;inset:0;z-index:-2;
+  width:100%;height:100%;object-fit:cover;
+  animation:heroZoom 1.7s cubic-bezier(.16,1,.3,1) both;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(13,11,9,.28) 0%,rgba(13,11,9,.52) 18%,rgba(13,11,9,.76) 32%,rgba(13,11,9,.82) 60%,rgba(13,11,9,.95) 100%);
+}
+.hero-inner{
+  position:relative;z-index:1;
+  padding-block:clamp(3.5rem,10vh,6.5rem) clamp(2.75rem,7vh,4.5rem);
+}
+
+.hero-title{font-weight:400;margin:0}
+.wordmark{
+  display:flex;justify-content:space-between;width:100%;
+  font-family:var(--font-display);
+  font-size:6rem;
+  line-height:.88;letter-spacing:0;
+  color:#fff;text-transform:uppercase;
+}
+.wordmark>span{display:block;animation:letterRise .95s cubic-bezier(.16,1,.3,1) both}
+.wordmark>span:nth-child(1){animation-delay:.05s}
+.wordmark>span:nth-child(2){animation-delay:.11s}
+.wordmark>span:nth-child(3){animation-delay:.17s}
+.wordmark>span:nth-child(4){animation-delay:.23s}
+.wordmark>span:nth-child(5){animation-delay:.29s}
+.wordmark>span:nth-child(6){animation-delay:.35s}
+
+.tagline{
+  display:block;margin-top:clamp(.85rem,2.4vh,1.4rem);
+  font-family:var(--font-display);
+  font-size:clamp(1.05rem,2.4vw,1.7rem);
+  line-height:1.15;letter-spacing:-.02em;
+  color:#e8d5c4;text-wrap:balance;
+  animation:fadeUp .8s cubic-bezier(.16,1,.3,1) .5s both;
+}
+.hero-lede{
+  max-width:54ch;margin:clamp(1.25rem,3vh,1.9rem) 0 clamp(1.6rem,3.5vh,2.3rem);
+  color:#e3ddd7;
+  font-size:clamp(1rem,1.5vw,1.15rem);line-height:1.55;
+  animation:fadeUp .8s cubic-bezier(.16,1,.3,1) .62s both;
+}
+.hero-actions{
+  display:flex;flex-wrap:wrap;gap:.85rem;
+  animation:fadeUp .8s cubic-bezier(.16,1,.3,1) .74s both;
+}
+
+@keyframes heroZoom{from{transform:scale(1.09)}to{transform:scale(1)}}
+@keyframes letterRise{
+  from{opacity:0;transform:translateY(.38em);filter:blur(9px)}
+  to{opacity:1;transform:none;filter:blur(0)}
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:none}
+}
+
+/* ─────────────────────────────────────────────
+   Manifesto band
+   ───────────────────────────────────────────── */
+.band{
+  background:var(--accent);color:var(--on-accent);
+  padding:4.5rem 0;
+}
+.band-statement{
+  margin:0;max-width:24ch;
+  font-family:var(--font-display);
+  font-size:3.25rem;line-height:1.05;letter-spacing:-.03em;
+  text-wrap:balance;
+}
+
+/* ─────────────────────────────────────────────
+   Sections
+   ───────────────────────────────────────────── */
+.section{padding:6.5rem 0;scroll-margin-top:4.5rem}
+.section-title{font-size:clamp(1.9rem,4.2vw,3rem);line-height:.95}
+.section-head{margin-bottom:3rem}
+
+.band-surface{
+  background:var(--surface);
+  border-block:1px solid var(--line);
+}
+
+/* Products */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,258px),1fr));
+  gap:clamp(1.75rem,3vw,2.5rem);
+  list-style:none;margin:0;padding:0;
+}
+.product{
+  display:flex;flex-direction:column;height:100%;
+  border-radius:16px;
+}
+.media{
+  display:block;
+  position:relative;overflow:hidden;
+  background:var(--surface);border-radius:16px;
+}
+.products .media{aspect-ratio:4/5}
+.media img{
+  position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s cubic-bezier(.16,1,.3,1);
+}
+.product:hover .media img{transform:scale(1.05)}
+
+.product-body{
+  display:flex;flex-direction:column;flex:1;gap:.6rem;
+  padding-top:1.15rem;
+}
+.product-body h3{font-size:1.2rem;letter-spacing:-.02em}
+.product-desc{
+  margin:0;color:var(--ink-dim);
+  font-size:.95rem;line-height:1.45;max-width:34ch;
+}
+.product-price{
+  margin:0;font-weight:700;font-size:1.05rem;
+  font-variant-numeric:tabular-nums;letter-spacing:0;
+}
+.product-cta{
+  align-self:flex-start;margin-top:auto;
+  padding:.55rem 1.1rem;
+  border:1.5px solid var(--ink);border-radius:.45rem;
+  font-family:var(--font-display);font-size:.72rem;
+  text-transform:uppercase;letter-spacing:.1em;
+  transition:background-color .2s,color .2s,border-color .2s;
+}
+.product:hover .product-cta,
+.product:focus-visible .product-cta{
+  background:var(--accent);border-color:var(--accent);color:var(--on-accent);
+}
+.product:focus-visible{outline-offset:6px}
 
 /* Accessories */
-.accessories{padding:4rem 0 6rem;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.access-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:2rem}
-.access-card{border-radius:1rem;overflow:hidden;border:1px solid var(--border);background:var(--base);transition:box-shadow .25s,transform .25s}
-.access-card:hover{box-shadow:0 12px 30px var(--shadow-hover);transform:translateY(-3px)}
-.access-card .access-img{aspect-ratio:1;overflow:hidden;background:#ddd9d0}
-.access-card .access-body{padding:1.1rem 1.1rem 1.3rem}
-.access-card h4{font-family:var(--font-display);font-size:1rem;margin-bottom:.35rem}
-.access-card .access-price{font-weight:800;color:var(--accent);font-size:1rem}
-
-/* Lookbook / Editorial */
-.lookbook{padding:6rem 0 8rem}
-.lookbook-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2rem}
-.lookbook-card{border-radius:1rem;overflow:hidden;border:1px solid var(--border);position:relative}
-.lookbook-card img{aspect-ratio:3/4;object-fit:cover;display:block}
-.lookbook-card .lookbook-body{padding:1.25rem}
-.lookbook-card h3{font-family:var(--font-display);font-size:1.25rem;margin-bottom:.25rem}
-.lookbook-card p{color:var(--ink-dim);font-size:.95rem;line-height:1.35}
-
-/* Footer */
-.site-footer{background:var(--ink);color:#aaa;color:#ddd;padding:4rem 2rem 2rem}
-.site-footer .inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:3rem}
-.site-footer h4{font-family:var(--font-display);font-size:1rem;margin-bottom:.75rem;color:#fff;text-transform:uppercase;letter-spacing:.08em}
-.site-footer a{color:#ccc;text-decoration:underline;text-underline-offset:3px;text-decoration-color:#6e2e24}
-.site-footer a:hover{color:#fff}
-.site-footer .legal{border-top:1px solid #333;margin-top:3rem;padding-top:2rem;font-size:.85rem;color:#888;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-
-@media (max-width:760px){
-  .nav{padding:1rem 1.25rem;font-size:.75rem}
-  .hero-inner{padding:4rem 1.25rem 3rem}
-  .hero h1{font-size:15vw}
-  .catalog{padding:4rem 0 6rem}
-  .container{padding:0 1.25rem}
-  .lookbook-grid,.catalog-grid{grid-template-columns:1fr}
+.access-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));
+  gap:clamp(1.25rem,2.5vw,2rem);
+  list-style:none;margin:0;padding:0;
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.access{
+  display:flex;align-items:center;gap:1.15rem;
+  padding:.65rem;border-radius:16px;
+  transition:background-color .2s;
+}
+.access:hover{background:var(--base)}
+.access .media{width:92px;height:92px;flex:0 0 92px;aspect-ratio:1}
+.access-body{min-width:0}
+.access-body h3{font-size:1.02rem;letter-spacing:-.02em}
+.access-desc{
+  display:block;margin:.35rem 0 0;color:var(--ink-dim);
+  font-size:.88rem;line-height:1.4;
+}
+.access-price{
+  display:block;margin-top:.5rem;font-weight:700;font-size:.95rem;
+  color:var(--accent);font-variant-numeric:tabular-nums;
+}
+.access:focus-visible{outline-offset:4px}
+
+/* Lookbook */
+.lookbook-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));
+  gap:clamp(1.75rem,3vw,2.5rem);
+  list-style:none;margin:0;padding:0;
+}
+.look{margin:0}
+.look .media{aspect-ratio:3/4}
+.look figcaption{padding-top:1.1rem}
+.look h3{font-size:1.18rem;letter-spacing:-.02em}
+.look p{margin:.45rem 0 0;color:var(--ink-dim);font-size:.95rem;line-height:1.45;max-width:36ch}
+
+/* Contact */
+.contact-grid{
+  display:grid;
+  grid-template-columns:1.45fr 1fr;
+  gap:clamp(2.5rem,6vw,5rem);
+  align-items:start;
+}
+.contact-lead{
+  margin:1.15rem 0 2rem;
+  color:var(--ink-dim);font-size:1.1rem;line-height:1.5;max-width:34ch;
+}
+.contact-alt h3{font-size:1.1rem;margin-bottom:1rem}
+.contact-list{
+  list-style:none;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:.85rem;
+  font-size:1.02rem;
+}
+.contact-list a{
+  display:inline-flex;align-items:center;
+  padding-bottom:2px;
+  border-bottom:1px solid var(--line);
+  transition:border-color .2s,color .2s;
+}
+.contact-list a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* ─────────────────────────────────────────────
+   Footer
+   ───────────────────────────────────────────── */
+.site-footer{
+  background:var(--footer-bg);color:var(--footer-ink);
+  padding:clamp(3rem,6vw,4.5rem) 0 clamp(1.5rem,3vw,2rem);
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));
+  gap:clamp(2rem,4vw,3rem);
+}
+.site-footer h4{
+  font-size:.75rem;text-transform:uppercase;letter-spacing:.13em;
+  color:#fff;margin-bottom:1rem;
+}
+.site-footer p{
+  margin:0;font-size:.95rem;line-height:1.55;
+  color:var(--footer-dim);max-width:38ch;
+}
+.footer-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.55rem}
+.footer-list a{
+  font-size:.95rem;color:var(--footer-ink);
+  text-decoration:underline;text-underline-offset:4px;
+  text-decoration-color:var(--footer-line);
+  transition:color .2s,text-decoration-color .2s;
+}
+.footer-list a:hover{color:#fff;text-decoration-color:var(--accent)}
+.footer-legal{
+  margin-top:clamp(2.5rem,5vw,3.5rem);padding-top:1.75rem;
+  border-top:1px solid var(--footer-line);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:.75rem;
+  font-size:.85rem;color:var(--footer-dim);
+}
+
+/* ─────────────────────────────────────────────
+   Reveal
+   ───────────────────────────────────────────── */
+.js .reveal{clip-path:inset(0 0 100% 0);transition:clip-path .8s cubic-bezier(.16,1,.3,1)}
+.js .reveal.is-in{clip-path:inset(0 0 0 0)}
+.products li:nth-child(2) .reveal,
+.access-grid li:nth-child(2) .reveal,
+.lookbook-grid li:nth-child(2) .reveal{transition-delay:.09s}
+.products li:nth-child(3) .reveal,
+.access-grid li:nth-child(3) .reveal,
+.lookbook-grid li:nth-child(3) .reveal{transition-delay:.18s}
+
+/* ─────────────────────────────────────────────
+   Responsive
+   ───────────────────────────────────────────── */
+@media (max-width:1100px){
+  .wordmark{font-size:4.75rem}
+}
+@media (max-width:900px){
+  .section{padding:5rem 0}
+  .band-statement{font-size:2.5rem}
+}
+@media (max-width:860px){
+  .contact-grid{grid-template-columns:1fr}
+}
+@media (max-width:700px){
+  .wordmark{font-size:3.5rem}
+}
+@media (max-width:640px){
+  .wrap{padding-inline:1.25rem}
+  .nav-links{display:none}
+  .nav-inner{min-height:3.5rem}
+  .section{padding:3.75rem 0}
+  .section-head{margin-bottom:2rem}
+  .band{padding:3rem 0}
+  .band-statement{font-size:2rem}
+  .hero{min-height:88vh;min-height:88svh}
+  .hero-actions .btn{flex:1 1 auto}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-delay:0ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+    transition-delay:0ms !important;
+  }
+}
 </style>
 </head>
+
 <body>
 
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
 <nav class="nav" aria-label="Principal">
-  <a href="#top">Temple</a>
-  <a href="#coleccion">Colección</a>
-  <a href="#lookbook">Lookbook</a>
-  <a href="#contacto">Contacto</a>
+  <div class="wrap nav-inner">
+    <a class="nav-brand" href="#top">Temple</a>
+    <ul class="nav-links" role="list">
+      <li><a href="#coleccion">Colección</a></li>
+      <li><a href="#lookbook">Lookbook</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a class="btn btn-solid btn-sm" href="https://wa.me/?text=Hola%20Temple">Pedir</a>
+  </div>
 </nav>
 
-<header class="hero" id="top">
-  <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=2070&auto=format&fit=crop" alt="Jugador de rugby en acción, estadio iluminado" loading="eager" fetchpriority="high" />
-  <div class="overlay" aria-hidden="true"></div>
-  <div class="hero-inner">
-    <h1>TEMPLE<br><span>El carácter se forja</span></h1>
-    <p>En el rugby, la fuerza no está solamente en el cuerpo. Está en la cabeza, y en la capacidad de levantarse después de cada tackle.</p>
-    <a class="cta" href="#coleccion">Ver colección</a>
-  </div>
-</header>
+<main id="contenido" tabindex="-1">
 
-<main>
-  <section class="catalog container" id="coleccion" aria-label="Colección de prendas">
-    <div class="catalog-header"><h2>Lo que te ponés después</h2></div>
-    <div class="catalog-grid">
-      <article class="card" aria-label="Polo de algodón">
-        <a href="#contacto" class="card-img"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=2070&auto=format&fit=crop" alt="Polo de algodón, puesto de día" loading="lazy" /></a>
-        <div class="card-body">
-          <h3>Polo</h3>
-          <p class="para">La calma de todos los días. Se entra al club con esto puesto y se sale igual.</p>
-          <p class="price">$ 89.000</p>
-          <a class="cta-sm" href="https://wa.me/?text=Quiero%20el%20Polo%20de%20Temple">Pedir por WhatsApp</a>
-        </div>
-      </article>
-      <article class="card" aria-label="Hoodie">
-        <a href="#contacto" class="card-img"><img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=2070&auto=format&fit=crop" alt="Hoodie, después del partido" loading="lazy" /></a>
-        <div class="card-body">
-          <h3>Hoodie</h3>
-          <p class="para">Quedarse cuando el resto ya se fue. El after, el frío, el grupo.</p>
-          <p class="price">$ 124.000</p>
-          <a class="cta-sm" href="https://wa.me/?text=Quiero%20el%20Hoodie%20de%20Temple">Pedir por WhatsApp</a>
-        </div>
-      </article>
-      <article class="card" aria-label="Campera">
-        <a href="#contacto" class="card-img"><img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=80&w=2070&auto=format&fit=crop" alt="Campera para el viaje" loading="lazy" /></a>
-        <div class="card-body">
-          <h3>Campera</h3>
-          <p class="para">Salir de nuevo después del golpe. Para el viaje y el día difícil.</p>
-          <p class="price">$ 168.000</p>
-          <a class="cta-sm" href="https://wa.me/?text=Quiero%20la%20Campera%20de%20Temple">Pedir por WhatsApp</a>
-        </div>
-      </article>
-    </div>
-  </main>
+  <header class="hero" id="top">
+    <img class="hero-img"
+         src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=75&auto=format&fit=crop&w=2000"
+         srcset="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=75&auto=format&fit=crop&w=1400 1400w,
+                 https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=75&auto=format&fit=crop&w=2000 2000w,
+                 https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=75&auto=format&fit=crop&w=2600 2600w"
+         sizes="100vw" width="2000" height="1333"
+         alt="Jugador de rugby en acción, estadio iluminado"
+         fetchpriority="high" decoding="async">
 
-  <section class="accessories container" aria-label="Accesorios">
-    <div class="section-label">Accesorios</div>
-    <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);line-height:.9;letter-spacing:-.03em;margin-bottom:2rem">Lo que queda en la pared</h2>
-    <div class="access-grid">
-      <article class="access-card" aria-label="Cuadro">
-        <div class="access-img"><img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?q=80&w=2070&auto=format&fit=crop" alt="Cuadro con frase, en una pared" loading="lazy" /></div>
-        <div class="access-body"><h4>Cuadro</h4><p style="color:var(--ink-dim);font-size:.9rem;line-height:1.35">La frase queda en la pared cuando la prenda no está puesta.</p><p class="access-price">$ 42.000</p></div>
-      </article>
-      <article class="access-card" aria-label="Cartas">
-        <div class="access-img"><img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?q=80&w=2070&auto=format&fit=crop" alt="Mazo de cartas sobre una mesa" loading="lazy" /></div>
-        <div class="access-body"><h4>Cartas</h4><p style="color:var(--ink-dim);font-size:.9rem;line-height:1.35">El ritual: la calma, levantarse, el de al lado.</p><p class="access-price">$ 12.000</p></div>
-      </article>
-      <article class="access-card" aria-label="Taza">
-        <div class="access-img"><img src="https://images.unsplash.com/photo-1514228742587-6b1558f4d7ea?q=80&w=2070&auto=format&fit=crop" alt="Taza de café" loading="lazy" /></div>
-        <div class="access-body"><h4>Taza</h4><p style="color:var(--ink-dim);font-size:.9rem;line-height:1.35">La del after, con la frase.</p><p class="access-price">$ 18.000</p></div>
-      </article>
-    </div>
-  </section>
-
-  <section class="lookbook" id="lookbook" aria-label="Lookbook">
-    <div class="container"><h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);line-height:.9;letter-spacing:-.03em;margin-bottom:2rem">Lookbook — El partido</h2></div>
-    <div class="container"><div class="lookbook-grid">
-      <article class="lookbook-card" aria-label="Acción en el campo">
-        <img src="https://images.unsplash.com/photo-1569517282132-25d22f4573e6?q=80&w=2070&auto=format&fit=crop" alt="Jugadores de rugby en acción en el campo" loading="lazy" />
-        <div class="lookbook-body"><h3>El golpe</h3><p>El tackle no es el final. Es el principio de levantarse.</p></div>
-      </article>
-      <article class="lookbook-card" aria-label="After del partido">
-        <img src="https://images.unsplash.com/photo-1504450758481-7338ba3b8e0c?q=80&w=2070&auto=format&fit=crop" alt="Grupo de jugadores después del partido" loading="lazy" />
-        <div class="lookbook-body"><h3>El after</h3><p>Cuando el resto se fue, el grupo queda. Eso es Temple.</p></div>
-      </article>
-      <article class="lookbook-card" aria-label="Entrenamiento">
-        <img src="https://images.unsplash.com/photo-1594882645126-14020914d58d?q=80&w=2070&auto=format&fit=crop" alt="Entrenamiento de rugby en campo iluminado" loading="lazy" />
-        <div class="lookbook-body"><h3>El entrenamiento</h3><p>La calma se entrena. La cabeza fría es un músculo.</p></div>
-      </article>
-    </div></div>
-  </section>
-
-  <section id="contacto" aria-label="Contacto" style="padding:6rem 0 8rem;background:var(--surface);border-top:1px solid var(--border)">
-    <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start">
-      <div>
-        <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);line-height:.9;letter-spacing:-.03em;margin-bottom:1.5rem">Pedí por WhatsApp</h2>
-        <p style="font-size:1.1rem;line-height:1.45;color:var(--ink-dim);margin-bottom:2rem">Contame qué querés. Te respondo rápido.</p>
-        <a class="cta" href="https://wa.me/?text=Hola%20Temple" style="font-size:1rem;padding:.9rem 2.5rem">Escribir por WhatsApp</a>
+    <div class="wrap hero-inner">
+      <h1 class="hero-title">
+        <span class="sr-only">Temple</span>
+        <span class="wordmark" aria-hidden="true"><span>T</span><span>E</span><span>M</span><span>P</span><span>L</span><span>E</span></span>
+        <span class="tagline">El carácter se forja</span>
+      </h1>
+      <p class="hero-lede">En el rugby, la fuerza no está solamente en el cuerpo. Está en la cabeza, y en la capacidad de levantarse después de cada tackle.</p>
+      <div class="hero-actions">
+        <a class="btn btn-cream" href="#coleccion">Ver colección</a>
+        <a class="btn btn-ghost" href="https://wa.me/?text=Hola%20Temple">Pedir por WhatsApp</a>
       </div>
+    </div>
+  </header>
+
+  <section class="band">
+    <div class="wrap">
+      <p class="band-statement">Diseñado para el rugby, hecho para durar.</p>
+    </div>
+  </section>
+
+  <section class="section" id="coleccion" aria-labelledby="coleccion-t">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title" id="coleccion-t">Lo que te ponés después</h2>
+      </div>
+
+      <ul class="products" role="list">
+        <li>
+          <a class="product" href="https://wa.me/?text=Quiero%20el%20Polo%20de%20Temple">
+            <span class="media reveal">
+              <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=72&auto=format&fit=crop&w=840"
+                   srcset="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=72&auto=format&fit=crop&w=560 560w,
+                           https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=72&auto=format&fit=crop&w=840 840w,
+                           https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=72&auto=format&fit=crop&w=1200 1200w"
+                   sizes="(max-width:700px) calc(100vw - 40px), (max-width:1100px) 45vw, 30vw"
+                   width="840" height="1050" alt="" loading="lazy" decoding="async">
+            </span>
+            <span class="product-body">
+              <h3>Polo</h3>
+              <span class="product-desc">La calma de todos los días. Se entra al club con esto puesto y se sale igual.</span>
+              <span class="product-price">$ 89.000</span>
+              <span class="product-cta">Pedir por WhatsApp</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="product" href="https://wa.me/?text=Quiero%20el%20Hoodie%20de%20Temple">
+            <span class="media reveal">
+              <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=72&auto=format&fit=crop&w=840"
+                   srcset="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=72&auto=format&fit=crop&w=560 560w,
+                           https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=72&auto=format&fit=crop&w=840 840w,
+                           https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=72&auto=format&fit=crop&w=1200 1200w"
+                   sizes="(max-width:700px) calc(100vw - 40px), (max-width:1100px) 45vw, 30vw"
+                   width="840" height="1050" alt="" loading="lazy" decoding="async">
+            </span>
+            <span class="product-body">
+              <h3>Hoodie</h3>
+              <span class="product-desc">Quedarse cuando el resto ya se fue. El after, el frío, el grupo.</span>
+              <span class="product-price">$ 124.000</span>
+              <span class="product-cta">Pedir por WhatsApp</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="product" href="https://wa.me/?text=Quiero%20la%20Campera%20de%20Temple">
+            <span class="media reveal">
+              <img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=72&auto=format&fit=crop&w=840"
+                   srcset="https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=72&auto=format&fit=crop&w=560 560w,
+                           https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=72&auto=format&fit=crop&w=840 840w,
+                           https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=72&auto=format&fit=crop&w=1200 1200w"
+                   sizes="(max-width:700px) calc(100vw - 40px), (max-width:1100px) 45vw, 30vw"
+                   width="840" height="1050" alt="" loading="lazy" decoding="async">
+            </span>
+            <span class="product-body">
+              <h3>Campera</h3>
+              <span class="product-desc">Salir de nuevo después del golpe. Para el viaje y el día difícil.</span>
+              <span class="product-price">$ 168.000</span>
+              <span class="product-cta">Pedir por WhatsApp</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section band-surface" id="accesorios" aria-labelledby="accesorios-t">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title" id="accesorios-t">Lo que queda en la pared</h2>
+      </div>
+
+      <ul class="access-grid" role="list">
+        <li>
+          <a class="access" href="https://wa.me/?text=Quiero%20el%20Cuadro%20de%20Temple">
+            <span class="media reveal">
+              <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?q=72&auto=format&fit=crop&w=240"
+                   width="240" height="240" alt="" loading="lazy" decoding="async">
+            </span>
+            <span class="access-body">
+              <h3>Cuadro</h3>
+              <span class="access-desc">La frase queda en la pared cuando la prenda no está puesta.</span>
+              <span class="access-price">$ 42.000</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="access" href="https://wa.me/?text=Quiero%20las%20Cartas%20de%20Temple">
+            <span class="media reveal">
+              <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?q=72&auto=format&fit=crop&w=240"
+                   width="240" height="240" alt="" loading="lazy" decoding="async">
+            </span>
+            <span class="access-body">
+              <h3>Cartas</h3>
+              <span class="access-desc">El ritual: la calma, levantarse, el de al lado.</span>
+              <span class="access-price">$ 12.000</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="access" href="https://wa.me/?text=Quiero%20la%20Taza%20de%20Temple">
+            <span class="media reveal">
+              <img src="https://images.unsplash.com/photo-1514228742587-6b1558f4d7ea?q=72&auto=format&fit=crop&w=240"
+                   width="240" height="240" alt="" loading="lazy" decoding="async">
+            </span>
+            <span class="access-body">
+              <h3>Taza</h3>
+              <span class="access-desc">La del after, con la frase.</span>
+              <span class="access-price">$ 18.000</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="lookbook" aria-labelledby="lookbook-t">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title" id="lookbook-t">Lookbook — El partido</h2>
+      </div>
+
+      <ul class="lookbook-grid" role="list">
+        <li>
+          <figure class="look">
+            <span class="media reveal">
+              <img src="https://images.unsplash.com/photo-1569517282132-25d22f4573e6?q=72&auto=format&fit=crop&w=840"
+                   srcset="https://images.unsplash.com/photo-1569517282132-25d22f4573e6?q=72&auto=format&fit=crop&w=560 560w,
+                           https://images.unsplash.com/photo-1569517282132-25d22f4573e6?q=72&auto=format&fit=crop&w=840 840w,
+                           https://images.unsplash.com/photo-1569517282132-25d22f4573e6?q=72&auto=format&fit=crop&w=1200 1200w"
+                   sizes="(max-width:700px) calc(100vw - 40px), (max-width:1100px) 45vw, 30vw"
+                   width="840" height="1120" alt="Jugadores de rugby en acción en el campo" loading="lazy" decoding="async">
+            </span>
+            <figcaption>
+              <h3>El golpe</h3>
+              <p>El tackle no es el final. Es el principio de levantarse.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="look">
+            <span class="media reveal">
+              <img src="https://images.unsplash.com/photo-1504450758481-7338ba3b8e0c?q=72&auto=format&fit=crop&w=840"
+                   srcset="https://images.unsplash.com/photo-1504450758481-7338ba3b8e0c?q=72&auto=format&fit=crop&w=560 560w,
+                           https://images.unsplash.com/photo-1504450758481-7338ba3b8e0c?q=72&auto=format&fit=crop&w=840 840w,
+                           https://images.unsplash.com/photo-1504450758481-7338ba3b8e0c?q=72&auto=format&fit=crop&w=1200 1200w"
+                   sizes="(max-width:700px) calc(100vw - 40px), (max-width:1100px) 45vw, 30vw"
+                   width="840" height="1120" alt="Grupo de jugadores después del partido" loading="lazy" decoding="async">
+            </span>
+            <figcaption>
+              <h3>El after</h3>
+              <p>Cuando el resto se fue, el grupo queda. Eso es Temple.</p>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="look">
+            <span class="media reveal">
+              <img src="https://images.unsplash.com/photo-1594882645126-14020914d58d?q=72&auto=format&fit=crop&w=840"
+                   srcset="https://images.unsplash.com/photo-1594882645126-14020914d58d?q=72&auto=format&fit=crop&w=560 560w,
+                           https://images.unsplash.com/photo-1594882645126-14020914d58d?q=72&auto=format&fit=crop&w=840 840w,
+                           https://images.unsplash.com/photo-1594882645126-14020914d58d?q=72&auto=format&fit=crop&w=1200 1200w"
+                   sizes="(max-width:700px) calc(100vw - 40px), (max-width:1100px) 45vw, 30vw"
+                   width="840" height="1120" alt="Entrenamiento de rugby en campo iluminado" loading="lazy" decoding="async">
+            </span>
+            <figcaption>
+              <h3>El entrenamiento</h3>
+              <p>La calma se entrena. La cabeza fría es un músculo.</p>
+            </figcaption>
+          </figure>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section band-surface" id="contacto" aria-labelledby="contacto-t">
+    <div class="wrap contact-grid">
       <div>
-        <h3 style="font-family:var(--font-display);font-size:1.25rem;margin-bottom:1rem">También</h3>
-        <ul style="list-style:none;line-height:2;font-size:1.05rem">
+        <h2 class="section-title" id="contacto-t">Pedí por WhatsApp</h2>
+        <p class="contact-lead">Contame qué querés. Te respondo rápido.</p>
+        <a class="btn btn-solid btn-lg" href="https://wa.me/?text=Hola%20Temple">Escribir por WhatsApp</a>
+      </div>
+      <div class="contact-alt">
+        <h3>También</h3>
+        <ul class="contact-list" role="list">
           <li><a href="https://www.instagram.com/temple.argentina" target="_blank" rel="noopener">Instagram →</a></li>
           <li><a href="mailto:hola@temple.art">Email → hola@temple.art</a></li>
         </ul>
       </div>
     </div>
   </section>
+
 </main>
 
-<footer class="site-footer" aria-label="Pie de página">
-  <div class="inner">
-    <div>
-      <h4>Temple</h4>
-      <p style="font-size:.95rem;color:#ccc;line-height:1.45">El carácter se forja. En el rugby, la fuerza está en la cabeza y en levantarse después de cada tackle.</p>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>Temple</h4>
+        <p>El carácter se forja. En el rugby, la fuerza está en la cabeza y en levantarse después de cada tackle.</p>
+      </div>
+      <div>
+        <h4>Productos</h4>
+        <ul class="footer-list" role="list">
+          <li><a href="#coleccion">Polo</a></li>
+          <li><a href="#coleccion">Hoodie</a></li>
+          <li><a href="#coleccion">Campera</a></li>
+          <li><a href="#accesorios">Cuadro</a></li>
+          <li><a href="#accesorios">Cartas</a></li>
+          <li><a href="#accesorios">Taza</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul class="footer-list" role="list">
+          <li><a href="https://wa.me/?text=Hola%20Temple">WhatsApp</a></li>
+          <li><a href="https://www.instagram.com/temple.argentina" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="mailto:hola@temple.art">Email</a></li>
+        </ul>
+      </div>
     </div>
-    <div>
-      <h4>Productos</h4>
-      <ul style="list-style:none;line-height:2;font-size:.95rem;color:#ccc">
-        <li><a href="#coleccion">Polo</a></li><li><a href="#coleccion">Hoodie</a></li><li><a href="#coleccion">Campera</a></li><li><a href="#coleccion">Cuadro</a></li><li><a href="#coleccion">Cartas</a></li><li><a href="#coleccion">Taza</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Contacto</h4>
-      <ul style="list-style:none;line-height:2;font-size:.95rem;color:#ccc">
-        <li><a href="https://wa.me/?text=Hola%20Temple">WhatsApp</a></li>
-        <li><a href="https://www.instagram.com/temple.argentina" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="mailto:hola@temple.art">Email</a></li>
-      </ul>
+    <div class="footer-legal">
+      <span>Temple · Argentina</span>
+      <span>Diseñado para el rugby, hecho para durar.</span>
     </div>
   </div>
-  <div class="legal inner"><span>Temple · Argentina</span><span>Diseñado para el rugby, hecho para durar.</span></div>
 </footer>
+
+<script>
+(function () {
+  var d = document;
+
+  /* Reveal on scroll: media panels wipe in. */
+  var reveal = [].slice.call(d.querySelectorAll('.reveal'));
+  if (reveal.length && 'IntersectionObserver' in window) {
+    var ro = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); obs.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    reveal.forEach(function (el) { ro.observe(el); });
+  } else {
+    reveal.forEach(function (el) { el.classList.add('is-in'); });
+  }
+
+  /* Active nav link for the section in view. */
+  var links = [].slice.call(d.querySelectorAll('.nav-links a[href^="#"]'));
+  if (links.length && 'IntersectionObserver' in window) {
+    var map = {};
+    links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+    var sections = [].slice.call(d.querySelectorAll('main section[id]'))
+      .filter(function (s) { return map[s.id]; });
+    var no = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.removeAttribute('aria-current'); });
+        map[e.target.id].setAttribute('aria-current', 'true');
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function (s) { no.observe(s); });
+  }
+})();
+</script>
 
 </body>
 </html>
