@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TEMPLE — El carácter se forja (Athletic Premium)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=Archivo+Black&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --base:#faf9f6; --surface:#f0ede8;
+  --ink:#141311; --ink-dim:#6a6560;
+  --accent:#6e2e24; --accent-vivid:#8b1a1a;
+  --border:#ddd9d0; --shadow:rgba(20,19,17,.10);
+  --shadow-hover:rgba(20,19,17,.18);
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-display:'Archivo Black',system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{--base:#141311; --surface:#1c1b19; --ink:#faf9f6; --ink-dim:#b8b5b0; --border:#3a3835; --shadow:rgba(0,0,0,.35); --shadow-hover:rgba(0,0,0,.55);}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+img{display:block;width:100%;height:auto;object-fit:cover}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--base);color:var(--ink);line-height:1.45;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(250,249,246,.92);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;font-family:var(--font-display);font-size:.85rem;text-transform:uppercase;letter-spacing:.08em}
+.nav a:hover{color:var(--accent)}
+
+/* Hero */
+.hero{position:relative;height:92vh;min-height:580px;overflow:hidden;background:#0d0b09}
+.hero img,.hero .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92}
+.hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,11,9,.25) 0%,rgba(13,11,9,.55) 70%,rgba(13,11,9,.85) 100%)}
+.hero-inner{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;justify-content:flex-end;padding:6rem 2rem 4rem;max-width:1200px;margin:0 auto;width:100%}
+.hero h1{font-family:var(--font-display);font-size:clamp(9vw,12rem,14rem);line-height:.82;letter-spacing:-.06em;color:#fff;margin-bottom:.6rem;text-shadow:0 30px 80px rgba(0,0,0,.35)}
+.hero h1 span{display:block;color:#e8d5c4}
+.hero p{font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.35;color:#ddd5cf;max-width:42ch;margin-bottom:2rem}
+.hero .cta{display:inline-block;padding:.75rem 2rem;background:var(--accent);color:#fff;font-weight:800;font-family:var(--font-display);font-size:.9rem;letter-spacing:.06em;border-radius:.5rem;transition:background .2s}
+.hero .cta:hover{background:var(--accent-vivid)}
+
+/* Sections */
+.container{max-width:1200px;margin:0 auto;padding:0 2rem}
+.section-label{font-family:var(--font-display);font-size:.85rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:.75rem}
+
+/* Catalog */
+.catalog{padding:6rem 0 8rem}
+.catalog-header{display:flex;align-items:end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
+.catalog h2{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4rem);line-height:.9;letter-spacing:-.03em}
+.catalog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:1rem;overflow:hidden;transition:box-shadow .25s,transform .25s}
+.card:hover{box-shadow:0 16px 40px var(--shadow-hover);transform:translateY(-4px)}
+.card-img{aspect-ratio:4/5;overflow:hidden;background:#ddd9d0;position:relative}
+.card-img img{transition:transform .4s}
+.card:hover .card-img img{transform:scale(1.03)}
+.card-body{padding:1.25rem 1.25rem 1.5rem}
+.card h3{font-family:var(--font-display);font-size:1.15rem;letter-spacing:-.01em;margin-bottom:.25rem}
+.card .para{color:var(--ink-dim);font-size:.95rem;line-height:1.35;margin-bottom:.75rem}
+.card .price{font-weight:800;font-size:1.05rem;margin-bottom:.5rem;color:var(--ink)}
+.card .cta-sm{display:inline-block;padding:.45rem 1rem;border:2px solid var(--ink);border-radius:.4rem;font-weight:700;font-size:.85rem;transition:background .2s,color .2s}
+.card .cta-sm:hover{background:var(--ink);color:#fff}
+
+/* Accessories */
+.accessories{padding:4rem 0 6rem;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.access-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:2rem}
+.access-card{border-radius:1rem;overflow:hidden;border:1px solid var(--border);background:var(--base);transition:box-shadow .25s,transform .25s}
+.access-card:hover{box-shadow:0 12px 30px var(--shadow-hover);transform:translateY(-3px)}
+.access-card .access-img{aspect-ratio:1;overflow:hidden;background:#ddd9d0}
+.access-card .access-body{padding:1.1rem 1.1rem 1.3rem}
+.access-card h4{font-family:var(--font-display);font-size:1rem;margin-bottom:.35rem}
+.access-card .access-price{font-weight:800;color:var(--accent);font-size:1rem}
+
+/* Lookbook / Editorial */
+.lookbook{padding:6rem 0 8rem}
+.lookbook-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2rem}
+.lookbook-card{border-radius:1rem;overflow:hidden;border:1px solid var(--border);position:relative}
+.lookbook-card img{aspect-ratio:3/4;object-fit:cover;display:block}
+.lookbook-card .lookbook-body{padding:1.25rem}
+.lookbook-card h3{font-family:var(--font-display);font-size:1.25rem;margin-bottom:.25rem}
+.lookbook-card p{color:var(--ink-dim);font-size:.95rem;line-height:1.35}
+
+/* Footer */
+.site-footer{background:var(--ink);color:#aaa;color:#ddd;padding:4rem 2rem 2rem}
+.site-footer .inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:3rem}
+.site-footer h4{font-family:var(--font-display);font-size:1rem;margin-bottom:.75rem;color:#fff;text-transform:uppercase;letter-spacing:.08em}
+.site-footer a{color:#ccc;text-decoration:underline;text-underline-offset:3px;text-decoration-color:#6e2e24}
+.site-footer a:hover{color:#fff}
+.site-footer .legal{border-top:1px solid #333;margin-top:3rem;padding-top:2rem;font-size:.85rem;color:#888;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+
+@media (max-width:760px){
+  .nav{padding:1rem 1.25rem;font-size:.75rem}
+  .hero-inner{padding:4rem 1.25rem 3rem}
+  .hero h1{font-size:15vw}
+  .catalog{padding:4rem 0 6rem}
+  .container{padding:0 1.25rem}
+  .lookbook-grid,.catalog-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Principal">
+  <a href="#top">Temple</a>
+  <a href="#coleccion">Colección</a>
+  <a href="#lookbook">Lookbook</a>
+  <a href="#contacto">Contacto</a>
+</nav>
+
+<header class="hero" id="top">
+  <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=2070&auto=format&fit=crop" alt="Jugador de rugby en acción, estadio iluminado" loading="eager" fetchpriority="high" />
+  <div class="overlay" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <h1>TEMPLE<br><span>El carácter se forja</span></h1>
+    <p>En el rugby, la fuerza no está solamente en el cuerpo. Está en la cabeza, y en la capacidad de levantarse después de cada tackle.</p>
+    <a class="cta" href="#coleccion">Ver colección</a>
+  </div>
+</header>
+
+<main>
+  <section class="catalog container" id="coleccion" aria-label="Colección de prendas">
+    <div class="catalog-header"><h2>Lo que te ponés después</h2></div>
+    <div class="catalog-grid">
+      <article class="card" aria-label="Polo de algodón">
+        <a href="#contacto" class="card-img"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=2070&auto=format&fit=crop" alt="Polo de algodón, puesto de día" loading="lazy" /></a>
+        <div class="card-body">
+          <h3>Polo</h3>
+          <p class="para">La calma de todos los días. Se entra al club con esto puesto y se sale igual.</p>
+          <p class="price">$ 89.000</p>
+          <a class="cta-sm" href="https://wa.me/?text=Quiero%20el%20Polo%20de%20Temple">Pedir por WhatsApp</a>
+        </div>
+      </article>
+      <article class="card" aria-label="Hoodie">
+        <a href="#contacto" class="card-img"><img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=2070&auto=format&fit=crop" alt="Hoodie, después del partido" loading="lazy" /></a>
+        <div class="card-body">
+          <h3>Hoodie</h3>
+          <p class="para">Quedarse cuando el resto ya se fue. El after, el frío, el grupo.</p>
+          <p class="price">$ 124.000</p>
+          <a class="cta-sm" href="https://wa.me/?text=Quiero%20el%20Hoodie%20de%20Temple">Pedir por WhatsApp</a>
+        </div>
+      </article>
+      <article class="card" aria-label="Campera">
+        <a href="#contacto" class="card-img"><img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=80&w=2070&auto=format&fit=crop" alt="Campera para el viaje" loading="lazy" /></a>
+        <div class="card-body">
+          <h3>Campera</h3>
+          <p class="para">Salir de nuevo después del golpe. Para el viaje y el día difícil.</p>
+          <p class="price">$ 168.000</p>
+          <a class="cta-sm" href="https://wa.me/?text=Quiero%20la%20Campera%20de%20Temple">Pedir por WhatsApp</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <section class="accessories container" aria-label="Accesorios">
+    <div class="section-label">Accesorios</div>
+    <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);line-height:.9;letter-spacing:-.03em;margin-bottom:2rem">Lo que queda en la pared</h2>
+    <div class="access-grid">
+      <article class="access-card" aria-label="Cuadro">
+        <div class="access-img"><img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?q=80&w=2070&auto=format&fit=crop" alt="Cuadro con frase, en una pared" loading="lazy" /></div>
+        <div class="access-body"><h4>Cuadro</h4><p style="color:var(--ink-dim);font-size:.9rem;line-height:1.35">La frase queda en la pared cuando la prenda no está puesta.</p><p class="access-price">$ 42.000</p></div>
+      </article>
+      <article class="access-card" aria-label="Cartas">
+        <div class="access-img"><img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?q=80&w=2070&auto=format&fit=crop" alt="Mazo de cartas sobre una mesa" loading="lazy" /></div>
+        <div class="access-body"><h4>Cartas</h4><p style="color:var(--ink-dim);font-size:.9rem;line-height:1.35">El ritual: la calma, levantarse, el de al lado.</p><p class="access-price">$ 12.000</p></div>
+      </article>
+      <article class="access-card" aria-label="Taza">
+        <div class="access-img"><img src="https://images.unsplash.com/photo-1514228742587-6b1558f4d7ea?q=80&w=2070&auto=format&fit=crop" alt="Taza de café" loading="lazy" /></div>
+        <div class="access-body"><h4>Taza</h4><p style="color:var(--ink-dim);font-size:.9rem;line-height:1.35">La del after, con la frase.</p><p class="access-price">$ 18.000</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="lookbook" id="lookbook" aria-label="Lookbook">
+    <div class="container"><h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);line-height:.9;letter-spacing:-.03em;margin-bottom:2rem">Lookbook — El partido</h2></div>
+    <div class="container"><div class="lookbook-grid">
+      <article class="lookbook-card" aria-label="Acción en el campo">
+        <img src="https://images.unsplash.com/photo-1569517282132-25d22f4573e6?q=80&w=2070&auto=format&fit=crop" alt="Jugadores de rugby en acción en el campo" loading="lazy" />
+        <div class="lookbook-body"><h3>El golpe</h3><p>El tackle no es el final. Es el principio de levantarse.</p></div>
+      </article>
+      <article class="lookbook-card" aria-label="After del partido">
+        <img src="https://images.unsplash.com/photo-1504450758481-7338ba3b8e0c?q=80&w=2070&auto=format&fit=crop" alt="Grupo de jugadores después del partido" loading="lazy" />
+        <div class="lookbook-body"><h3>El after</h3><p>Cuando el resto se fue, el grupo queda. Eso es Temple.</p></div>
+      </article>
+      <article class="lookbook-card" aria-label="Entrenamiento">
+        <img src="https://images.unsplash.com/photo-1594882645126-14020914d58d?q=80&w=2070&auto=format&fit=crop" alt="Entrenamiento de rugby en campo iluminado" loading="lazy" />
+        <div class="lookbook-body"><h3>El entrenamiento</h3><p>La calma se entrena. La cabeza fría es un músculo.</p></div>
+      </article>
+    </div></div>
+  </section>
+
+  <section id="contacto" aria-label="Contacto" style="padding:6rem 0 8rem;background:var(--surface);border-top:1px solid var(--border)">
+    <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start">
+      <div>
+        <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);line-height:.9;letter-spacing:-.03em;margin-bottom:1.5rem">Pedí por WhatsApp</h2>
+        <p style="font-size:1.1rem;line-height:1.45;color:var(--ink-dim);margin-bottom:2rem">Contame qué querés. Te respondo rápido.</p>
+        <a class="cta" href="https://wa.me/?text=Hola%20Temple" style="font-size:1rem;padding:.9rem 2.5rem">Escribir por WhatsApp</a>
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-display);font-size:1.25rem;margin-bottom:1rem">También</h3>
+        <ul style="list-style:none;line-height:2;font-size:1.05rem">
+          <li><a href="https://www.instagram.com/temple.argentina" target="_blank" rel="noopener">Instagram →</a></li>
+          <li><a href="mailto:hola@temple.art">Email → hola@temple.art</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" aria-label="Pie de página">
+  <div class="inner">
+    <div>
+      <h4>Temple</h4>
+      <p style="font-size:.95rem;color:#ccc;line-height:1.45">El carácter se forja. En el rugby, la fuerza está en la cabeza y en levantarse después de cada tackle.</p>
+    </div>
+    <div>
+      <h4>Productos</h4>
+      <ul style="list-style:none;line-height:2;font-size:.95rem;color:#ccc">
+        <li><a href="#coleccion">Polo</a></li><li><a href="#coleccion">Hoodie</a></li><li><a href="#coleccion">Campera</a></li><li><a href="#coleccion">Cuadro</a></li><li><a href="#coleccion">Cartas</a></li><li><a href="#coleccion">Taza</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul style="list-style:none;line-height:2;font-size:.95rem;color:#ccc">
+        <li><a href="https://wa.me/?text=Hola%20Temple">WhatsApp</a></li>
+        <li><a href="https://www.instagram.com/temple.argentina" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="mailto:hola@temple.art">Email</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal inner"><span>Temple · Argentina</span><span>Diseñado para el rugby, hecho para durar.</span></div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+name = "temple-v2"
+compatibility_date = "2024-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+pages_build_output_dir = "v2"
+
+# Headers customizados para Cloudflare Pages
+[[headers]]
+for = "/*"
+[headers.values]
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "DENY"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; img-src 'self' https://images.unsplash.com data:; font-src https://fonts.gstatic.com; connect-src 'self' https://wa.me"
+
+# Cache rules para assets estáticos
+[[headers]]
+for = "/images/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache para HTML (revalidar cada hora)
+[[headers]]
+for = "/*.html"
+[headers.values]
+Cache-Control = "public, max-age=3600, must-revalidate"
