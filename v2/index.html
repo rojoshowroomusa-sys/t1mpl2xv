@@ -342,17 +342,71 @@ h1,h2,h3,h4{
 }
 .product-cta{
   align-self:flex-start;margin-top:auto;
-  padding:.55rem 1.1rem;
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:.55rem 1.1rem;text-decoration:none;
   border:1.5px solid var(--ink);border-radius:.45rem;
   font-family:var(--font-display);font-size:.72rem;
   text-transform:uppercase;letter-spacing:.1em;
   transition:background-color .2s,color .2s,border-color .2s;
 }
 .product:hover .product-cta,
-.product:focus-visible .product-cta{
+.product:focus-within .product-cta{
   background:var(--accent);border-color:var(--accent);color:var(--on-accent);
 }
-.product:focus-visible{outline-offset:6px}
+.product-cta:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ─────────────────────────────────────────────
+   Variant picker — color · talle · cantidad
+   Controles dentro de la tarjeta: chips con
+   borde 1.5px y esquina .45rem (misma medida
+   que el CTA), etiquetas en display versalitas.
+   Sólo aparece con JS; sin JS la tarjeta queda
+   con su enlace original de WhatsApp.
+   ───────────────────────────────────────────── */
+.picker{
+  display:flex;flex-direction:column;gap:.85rem;
+  margin-top:.35rem;
+}
+.picker fieldset{border:0;margin:0;padding:0;min-width:0}
+.picker legend{
+  padding:0;margin:0 0 .45rem;
+  font-family:var(--font-display);font-size:.75rem;font-weight:400;
+  text-transform:uppercase;letter-spacing:.16em;color:var(--ink-dim);
+}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{position:relative;display:inline-flex}
+.chip input{
+  position:absolute;inset:0;width:100%;height:100%;
+  margin:0;opacity:0;cursor:pointer;
+}
+.chip span{
+  display:inline-flex;align-items:center;
+  padding:.42rem .7rem;
+  border:1.5px solid var(--line);border-radius:.45rem;
+  font-family:var(--font-display);font-size:.78rem;
+  text-transform:uppercase;letter-spacing:.09em;color:var(--ink);
+  transition:border-color .2s,background-color .2s,color .2s;
+}
+.chip:hover span{border-color:var(--ink)}
+.chip input:checked + span{
+  background:var(--accent);border-color:var(--accent);color:var(--on-accent);
+}
+.chip input:focus-visible + span{outline:2px solid var(--accent);outline-offset:3px}
+.qty{display:flex;align-items:center;gap:.4rem}
+.qty button{
+  width:2.05rem;height:2.05rem;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:transparent;color:var(--ink);
+  border:1.5px solid var(--line);border-radius:.45rem;
+  font-family:var(--font-display);font-size:.78rem;line-height:1;
+  cursor:pointer;transition:border-color .2s,background-color .2s,color .2s;
+}
+.qty button:hover{border-color:var(--ink);background:var(--surface)}
+.qty button:disabled{opacity:.35;cursor:not-allowed;border-color:var(--line);background:transparent}
+.qty output{
+  min-width:1.6rem;text-align:center;
+  font-weight:700;font-size:.95rem;font-variant-numeric:tabular-nums;
+}
 
 /* Accessories — la pared: pila de filas a todo el ancho.
    Mantiene el ritmo propio (filas, no tarjetas) pero al mismo nivel de
@@ -389,14 +443,30 @@ h1,h2,h3,h4{
   display:block;margin:.35rem 0 0;color:var(--ink-dim);
   font-size:.95rem;line-height:1.45;max-width:34ch;
 }
-.access-price{
+.access-buy{
   grid-area:price;
   justify-self:end;
+  display:flex;flex-direction:column;align-items:flex-end;gap:.6rem;
+}
+.access-price{
   font-weight:700;font-size:1.05rem;letter-spacing:0;
   color:var(--accent);font-variant-numeric:tabular-nums;
   white-space:nowrap;
 }
-.access:focus-visible{outline-offset:4px}
+.access-cta{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:.45rem .9rem;text-decoration:none;
+  border:1.5px solid var(--ink);border-radius:.45rem;
+  font-family:var(--font-display);font-size:.75rem;
+  text-transform:uppercase;letter-spacing:.13em;
+  transition:background-color .2s,color .2s,border-color .2s;
+}
+.access:hover .access-cta,
+.access:focus-within .access-cta{
+  background:var(--accent);border-color:var(--accent);color:var(--on-accent);
+}
+.access-cta:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.access:focus-within{background:var(--base)}
 @media (max-width:640px){
   .access{
     grid-template-columns:96px minmax(0,1fr);
@@ -406,7 +476,7 @@ h1,h2,h3,h4{
     padding:1.35rem .75rem;
     margin-inline:-.75rem;
   }
-  .access-price{justify-self:start;margin-top:.2rem}
+  .access-buy{justify-self:start;align-items:flex-start;margin-top:.2rem}
 }
 
 /* Lookbook */
@@ -611,7 +681,7 @@ h1,h2,h3,h4{
 
       <ul class="products" role="list">
         <li>
-          <a class="product" href="https://wa.me/?text=Quiero%20el%20Polo%20de%20Temple">
+          <article class="product">
             <span class="media reveal">
               <img src="images/temple-polo-840.png"
                    srcset="images/temple-polo-560.png 560w,
@@ -624,12 +694,13 @@ h1,h2,h3,h4{
               <h3>Polo</h3>
               <span class="product-desc">La calma de todos los días. Se entra al club con esto puesto y se sale igual.</span>
               <span class="product-price">$ 89.000</span>
-              <span class="product-cta">Pedir por WhatsApp</span>
+              <div class="picker" data-picker="polo"></div>
+              <a class="product-cta" href="https://wa.me/?text=Quiero%20el%20Polo%20de%20Temple">Pedir por WhatsApp</a>
             </span>
-          </a>
+          </article>
         </li>
         <li>
-          <a class="product" href="https://wa.me/?text=Quiero%20el%20Hoodie%20de%20Temple">
+          <article class="product">
             <span class="media reveal">
               <img src="images/temple-hoodie-840.png"
                    srcset="images/temple-hoodie-560.png 560w,
@@ -642,12 +713,13 @@ h1,h2,h3,h4{
               <h3>Hoodie</h3>
               <span class="product-desc">Quedarse cuando el resto ya se fue. El after, el frío, el grupo.</span>
               <span class="product-price">$ 124.000</span>
-              <span class="product-cta">Pedir por WhatsApp</span>
+              <div class="picker" data-picker="hoodie"></div>
+              <a class="product-cta" href="https://wa.me/?text=Quiero%20el%20Hoodie%20de%20Temple">Pedir por WhatsApp</a>
             </span>
-          </a>
+          </article>
         </li>
         <li>
-          <a class="product" href="https://wa.me/?text=Quiero%20la%20Campera%20de%20Temple">
+          <article class="product">
             <span class="media reveal">
               <img src="images/temple-campera-840.png"
                    srcset="images/temple-campera-560.png 560w,
@@ -660,9 +732,10 @@ h1,h2,h3,h4{
               <h3>Campera</h3>
               <span class="product-desc">Salir de nuevo después del golpe. Para el viaje y el día difícil.</span>
               <span class="product-price">$ 168.000</span>
-              <span class="product-cta">Pedir por WhatsApp</span>
+              <div class="picker" data-picker="campera"></div>
+              <a class="product-cta" href="https://wa.me/?text=Quiero%20la%20Campera%20de%20Temple">Pedir por WhatsApp</a>
             </span>
-          </a>
+          </article>
         </li>
       </ul>
     </div>
@@ -676,7 +749,7 @@ h1,h2,h3,h4{
 
       <ul class="access-grid" role="list">
         <li>
-          <a class="access" href="https://wa.me/?text=Quiero%20el%20Cuadro%20de%20Temple">
+          <article class="access">
             <span class="media reveal">
               <img src="images/temple-cuadro.png"
                    width="240" height="240" alt="" loading="lazy" decoding="async">
@@ -684,12 +757,16 @@ h1,h2,h3,h4{
             <span class="access-body">
               <h3>Cuadro</h3>
               <span class="access-desc">La frase queda en la pared cuando la prenda no está puesta.</span>
+              <div class="picker" data-picker="cuadro"></div>
             </span>
-            <span class="access-price">$ 42.000</span>
-          </a>
+            <span class="access-buy">
+              <span class="access-price">$ 42.000</span>
+              <a class="access-cta" href="https://wa.me/?text=Quiero%20el%20Cuadro%20de%20Temple">Pedir por WhatsApp</a>
+            </span>
+          </article>
         </li>
         <li>
-          <a class="access" href="https://wa.me/?text=Quiero%20las%20Cartas%20de%20Temple">
+          <article class="access">
             <span class="media reveal">
               <img src="images/temple-cartas.png"
                    width="240" height="240" alt="" loading="lazy" decoding="async">
@@ -697,12 +774,16 @@ h1,h2,h3,h4{
             <span class="access-body">
               <h3>Cartas</h3>
               <span class="access-desc">El ritual: la calma, levantarse, el de al lado.</span>
+              <div class="picker" data-picker="cartas"></div>
             </span>
-            <span class="access-price">$ 12.000</span>
-          </a>
+            <span class="access-buy">
+              <span class="access-price">$ 12.000</span>
+              <a class="access-cta" href="https://wa.me/?text=Quiero%20las%20Cartas%20de%20Temple">Pedir por WhatsApp</a>
+            </span>
+          </article>
         </li>
         <li>
-          <a class="access" href="https://wa.me/?text=Quiero%20la%20Taza%20de%20Temple">
+          <article class="access">
             <span class="media reveal">
               <img src="images/temple-taza.png"
                    width="240" height="240" alt="" loading="lazy" decoding="async">
@@ -710,9 +791,13 @@ h1,h2,h3,h4{
             <span class="access-body">
               <h3>Taza</h3>
               <span class="access-desc">La del after, con la frase.</span>
+              <div class="picker" data-picker="taza"></div>
             </span>
-            <span class="access-price">$ 18.000</span>
-          </a>
+            <span class="access-buy">
+              <span class="access-price">$ 18.000</span>
+              <a class="access-cta" href="https://wa.me/?text=Quiero%20la%20Taza%20de%20Temple">Pedir por WhatsApp</a>
+            </span>
+          </article>
         </li>
       </ul>
     </div>
@@ -863,6 +948,117 @@ h1,h2,h3,h4{
     }, { rootMargin: '-45% 0px -50% 0px' });
     sections.forEach(function (s) { no.observe(s); });
   }
+
+  /* ─────────────────────────────────────────────
+     Selector de variantes: color · talle · cantidad.
+     Arma el mensaje de WhatsApp con lo elegido.
+     Para cambiar o sumar variantes, editá SÓLO el
+     arreglo `colores` (y `talles`) de cada producto
+     en VARIANTES. Sin JS la tarjeta conserva su
+     enlace original de WhatsApp.
+     ───────────────────────────────────────────── */
+  var VARIANTES = {
+    polo:    { pedido: 'Quiero el Polo de Temple',    colores: ['Crudo'],       talles: ['S', 'M', 'L', 'XL'] },
+    hoodie:  { pedido: 'Quiero el Hoodie de Temple',  colores: ['Vino'],        talles: ['S', 'M', 'L', 'XL'] },
+    campera: { pedido: 'Quiero la Campera de Temple', colores: ['Verde oliva'], talles: ['S', 'M', 'L', 'XL'] },
+    cuadro:  { pedido: 'Quiero el Cuadro de Temple',  colores: ['Marco crudo'], talles: [] },
+    cartas:  { pedido: 'Quiero las Cartas de Temple', colores: ['Vino'],        talles: [] },
+    taza:    { pedido: 'Quiero la Taza de Temple',    colores: ['Blanca'],      talles: [] }
+  };
+
+  function chipGroup(legendTxt, name, values, current, onPick) {
+    var fs = d.createElement('fieldset');
+    var lg = d.createElement('legend');
+    lg.textContent = legendTxt;
+    fs.appendChild(lg);
+    var wrap = d.createElement('div');
+    wrap.className = 'chips';
+    values.forEach(function (v) {
+      var lab = d.createElement('label');
+      lab.className = 'chip';
+      var inp = d.createElement('input');
+      inp.type = 'radio';
+      inp.name = name;
+      inp.value = v;
+      inp.checked = (v === current);
+      inp.addEventListener('change', function () { if (inp.checked) onPick(v); });
+      var sp = d.createElement('span');
+      sp.textContent = v;
+      lab.appendChild(inp);
+      lab.appendChild(sp);
+      wrap.appendChild(lab);
+    });
+    fs.appendChild(wrap);
+    return fs;
+  }
+
+  [].slice.call(d.querySelectorAll('[data-picker]')).forEach(function (box) {
+    var sku = box.getAttribute('data-picker');
+    var cfg = VARIANTES[sku];
+    if (!cfg) return;
+    var card = box.closest('.product, .access');
+    if (!card) return;
+    var cta = card.querySelector('.product-cta, .access-cta');
+    var state = { color: cfg.colores[0], talle: cfg.talles[0] || '', qty: 1 };
+
+    function sync() {
+      if (!cta) return;
+      var partes = [];
+      if (state.color) partes.push('Color: ' + state.color);
+      if (state.talle) partes.push('Talle: ' + state.talle);
+      partes.push('Cantidad: ' + state.qty);
+      cta.setAttribute('href', 'https://wa.me/?text=' +
+        encodeURIComponent(cfg.pedido + ' · ' + partes.join(' · ')));
+    }
+
+    if (cfg.colores.length) {
+      box.appendChild(chipGroup('Color', 'color-' + sku, cfg.colores, state.color, function (v) {
+        state.color = v;
+        sync();
+      }));
+    }
+    if (cfg.talles.length) {
+      box.appendChild(chipGroup('Talle', 'talle-' + sku, cfg.talles, state.talle, function (v) {
+        state.talle = v;
+        sync();
+      }));
+    }
+
+    var fsq = d.createElement('fieldset');
+    var lgq = d.createElement('legend');
+    lgq.textContent = 'Cantidad';
+    fsq.appendChild(lgq);
+    var row = d.createElement('div');
+    row.className = 'qty';
+    var less = d.createElement('button');
+    less.type = 'button';
+    less.textContent = '−';
+    less.setAttribute('aria-label', 'Quitar una unidad');
+    var out = d.createElement('output');
+    out.textContent = '1';
+    var more = d.createElement('button');
+    more.type = 'button';
+    more.textContent = '+';
+    more.setAttribute('aria-label', 'Agregar una unidad');
+
+    function renderQty() {
+      out.textContent = String(state.qty);
+      less.disabled = state.qty <= 1;
+    }
+    less.addEventListener('click', function () {
+      if (state.qty > 1) { state.qty--; renderQty(); sync(); }
+    });
+    more.addEventListener('click', function () {
+      state.qty++; renderQty(); sync();
+    });
+    row.appendChild(less);
+    row.appendChild(out);
+    row.appendChild(more);
+    fsq.appendChild(row);
+    box.appendChild(fsq);
+    renderQty();
+    sync();
+  });
 })();
 </script>
 

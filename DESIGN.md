@@ -176,7 +176,7 @@ Ritmo vertical de secciones: `6.5rem` (104px) en desktop, `5rem` (80px) bajo 900
 
 Grillas por `repeat(auto-fit,minmax(min(100%,N),1fr))` — nunca columnas fijas:
 - **Productos:** `min(100%,258px)`, gap `clamp(1.75rem,3vw,2.5rem)`, media en `aspect-ratio:4/5`.
-- **Accesorios:** columna única (`1fr`) de filas a todo el ancho, cada una en `176px minmax(0,1fr) auto` con media cuadrada de `176px` (`96px` bajo 640px), filete de 1px `--line` entre filas, padding `1.75rem 1rem` y `margin-inline:-1rem` para que el hover pinte hasta el borde del contenedor. El precio va alineado a la derecha (izquierda, bajo la descripción, en mobile).
+- **Accesorios:** columna única (`1fr`) de filas a todo el ancho, cada una en `176px minmax(0,1fr) auto` con media cuadrada de `176px` (`96px` bajo 640px), filete de 1px `--line` entre filas, padding `1.75rem 1rem` y `margin-inline:-1rem` para que el hover pinte hasta el borde del contenedor. El bloque de compra va alineado a la derecha (precio encima, CTA debajo; ambos abajo a la izquierda en mobile).
 - **Lookbook:** `min(100%,290px)`, gap `clamp(1.75rem,3vw,2.5rem)`, media en `3/4`.
 - **Footer:** `min(100%,210px)`, gap `clamp(2rem,4vw,3rem)`.
 - **Contacto:** excepción con columnas explícitas `1.45fr 1fr`, gap `clamp(2.5rem,6vw,5rem)`; colapsa a una sola columna bajo 860px.
@@ -215,7 +215,16 @@ Bordes: **1.5px** para los controles accionables (`.btn`, `.product-cta`), **1px
 
 ### Product CTA (chip de compra)
 - **Shape:** borde 1.5px tinta, esquina 7px, padding `0.55rem 1.1rem`.
-- **State:** en reposo es outline; al hover o al `:focus-visible` de la tarjeta se llena de acento con texto sobre brasa. Nunca tiene fondo propio en reposo — es la única "acción" que espera a que mires la tarjeta.
+- **State:** en reposo es outline; al hover o al `:focus-within` de la tarjeta se llena de acento con texto sobre brasa. Nunca tiene fondo propio en reposo — es la única "acción" que espera a que mires la tarjeta.
+- **Semántica:** es un `<a href="https://wa.me/?text=…">` real. La tarjeta es un `<article>`, no un enlace: así puede alojar el selector de variantes sin anidar elementos interactivos dentro de un ancla. Lo mismo vale para la fila de accesorios.
+
+### Variant Picker (color · talle · cantidad)
+- **Dónde:** dentro de la tarjeta de producto (entre precio y CTA) y dentro del cuerpo de la fila de accesorio (entre descripción y precio). Se inyecta desde el objeto `VARIANTES` con JS; **sin JS no queda rastro**: la tarjeta conserva su enlace original de WhatsApp.
+- **Groups:** `Color` y `Talle` son `<fieldset>` con radios custom (leyenda en Label `.75rem` mayúsculas `--ink-dim`); `Cantidad` es un stepper `− n +` con `<output>` y `aria-label` en cada botón.
+- **Chip:** borde 1.5px `--line`, esquina 7px (misma medida que el CTA), Label `.78rem`/`.09em` en mayúsculas. Seleccionado se llena de acento con texto sobre brasa; foco con anillo 2px offset 3px. **Los chips son tipográficos**: no hay muestras de color, no se introducen hex nuevos ni círculos.
+- **Cantidad:** mínimo 1 (el `−` se deshabilita arriba del piso), sin tope. El selector **no calcula totales ni descuentos**: sólo elige.
+- **Mensaje:** `Quiero el Polo de Temple · Color: Crudo · Talle: M · Cantidad: 2`, codificado en el `href` de `wa.me`. Los precios nunca entran al mensaje ni se multiplican.
+- **Variantes hoy:** prendas con Color + Talle (`S·M·L·XL`) + Cantidad; accesorios con Color + Cantidad. El arreglo `colores` de cada producto es el único lugar para sumar variantes.
 
 ### Cards / Containers
 - **Corner Style:** 16px en media y en el contenedor del producto.
@@ -232,9 +241,9 @@ Bordes: **1.5px** para los controles accionables (`.btn`, `.product-cta`), **1px
 
 ### Accessory Row
 - **Shape:** fila a todo el ancho, esquinas 16px, padding `1.75rem 1rem` con `margin-inline:-1rem`; media cuadrada de 176px (96px bajo 640px) con el mismo reveal clip-path que el resto.
-- **Structure:** tres columnas `media | cuerpo | precio`; entre filas, un filete de 1px `--line`. Nunca es tarjeta: es una lista de precios.
-- **Typography:** título en Title (1.2rem), descripción en Body con máximo `34ch`, precio en 700 con `tabular-nums` y color acento, alineado a la derecha.
-- **Hover / Focus:** el fondo sube a `--base`, la imagen escala a `1.05` y el foco mantiene offset 4px.
+- **Structure:** tres columnas `media | cuerpo | compra`; el bloque de compra apila precio y CTA de pedido alineados a la derecha (izquierda, bajo la descripción, en mobile). Entre filas, un filete de 1px `--line`. Nunca es tarjeta: es una lista de precios, y es un `<article>` (el CTA es el enlace).
+- **Typography:** título en Title (1.2rem), descripción en Body con máximo `34ch`, precio en 700 con `tabular-nums` y color acento, CTA en Label `.75rem` con esquina 7px.
+- **Hover / Focus:** el fondo sube a `--base` (también con `:focus-within`), la imagen escala a `1.05` y el CTA se enciende a acento.
 
 ### Manifesto Band
 Bloque a todo el ancho, fondo acento, texto sobre brasa, `4.5rem` de padding, declaración a `3.25rem` con máximo `24ch`. Es el único lugar donde el acento ocupa fondo completo.
