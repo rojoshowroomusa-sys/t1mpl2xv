@@ -354,31 +354,60 @@ h1,h2,h3,h4{
 }
 .product:focus-visible{outline-offset:6px}
 
-/* Accessories */
+/* Accessories — la pared: pila de filas a todo el ancho.
+   Mantiene el ritmo propio (filas, no tarjetas) pero al mismo nivel de
+   expresión que la colección: media grande con reveal, título en la escala
+   real de producto, precio en acento y filete como separación estructural. */
 .access-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));
-  gap:clamp(1.25rem,2.5vw,2rem);
+  grid-template-columns:1fr;
+  gap:0;
   list-style:none;margin:0;padding:0;
 }
 .access{
-  display:flex;align-items:center;gap:1.15rem;
-  padding:.65rem;border-radius:16px;
+  display:grid;
+  grid-template-columns:176px minmax(0,1fr) auto;
+  grid-template-areas:"media body price";
+  align-items:center;
+  gap:clamp(1.25rem,3vw,2rem);
+  padding:1.75rem 1rem;
+  margin-inline:-1rem;
+  border-radius:16px;
   transition:background-color .2s;
 }
+.access-grid li + li .access{border-top:1px solid var(--line)}
 .access:hover{background:var(--base)}
-.access .media{width:92px;height:92px;flex:0 0 92px;aspect-ratio:1}
-.access-body{min-width:0}
-.access-body h3{font-size:1.02rem;letter-spacing:-.02em}
+.access .media{
+  grid-area:media;
+  width:100%;aspect-ratio:1;
+}
+.access:hover .media img,
+.access:focus-visible .media img{transform:scale(1.05)}
+.access-body{grid-area:body;min-width:0}
+.access-body h3{font-size:1.2rem;letter-spacing:-.02em}
 .access-desc{
   display:block;margin:.35rem 0 0;color:var(--ink-dim);
-  font-size:.88rem;line-height:1.4;
+  font-size:.95rem;line-height:1.45;max-width:34ch;
 }
 .access-price{
-  display:block;margin-top:.5rem;font-weight:700;font-size:.95rem;
+  grid-area:price;
+  justify-self:end;
+  font-weight:700;font-size:1.05rem;letter-spacing:0;
   color:var(--accent);font-variant-numeric:tabular-nums;
+  white-space:nowrap;
 }
 .access:focus-visible{outline-offset:4px}
+@media (max-width:640px){
+  .access{
+    grid-template-columns:96px minmax(0,1fr);
+    grid-template-areas:"media body" "media price";
+    align-items:start;
+    gap:.4rem 1.15rem;
+    padding:1.35rem .75rem;
+    margin-inline:-.75rem;
+  }
+  .access-price{justify-self:start;margin-top:.2rem}
+}
 
 /* Lookbook */
 .lookbook-grid{
@@ -655,8 +684,8 @@ h1,h2,h3,h4{
             <span class="access-body">
               <h3>Cuadro</h3>
               <span class="access-desc">La frase queda en la pared cuando la prenda no está puesta.</span>
-              <span class="access-price">$ 42.000</span>
             </span>
+            <span class="access-price">$ 42.000</span>
           </a>
         </li>
         <li>
@@ -668,8 +697,8 @@ h1,h2,h3,h4{
             <span class="access-body">
               <h3>Cartas</h3>
               <span class="access-desc">El ritual: la calma, levantarse, el de al lado.</span>
-              <span class="access-price">$ 12.000</span>
             </span>
+            <span class="access-price">$ 12.000</span>
           </a>
         </li>
         <li>
@@ -681,8 +710,8 @@ h1,h2,h3,h4{
             <span class="access-body">
               <h3>Taza</h3>
               <span class="access-desc">La del after, con la frase.</span>
-              <span class="access-price">$ 18.000</span>
             </span>
+            <span class="access-price">$ 18.000</span>
           </a>
         </li>
       </ul>

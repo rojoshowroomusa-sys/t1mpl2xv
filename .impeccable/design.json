@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-05T00:00:00.000Z",
+  "title": "Design System: Temple",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Óxido de Forja",
+        "canonical": "#6e2e24",
+        "darkVariant": "#dd8873",
+        "purpose": "El acento de la marca: botones sólidos, precios, nav activa, foco, ::selection y la banda manifiesto.",
+        "tonalRamp": ["oklch(0.17 0.04 35)", "oklch(0.24 0.06 35)", "oklch(0.31 0.075 35)", "oklch(0.37 0.08 35)", "oklch(0.48 0.10 35)", "oklch(0.62 0.12 35)", "oklch(0.77 0.10 35)", "oklch(0.91 0.05 35)"]
+      },
+      "primary-hi": {
+        "role": "primary",
+        "displayName": "Óxido Encendido",
+        "canonical": "#8b1a1a",
+        "darkVariant": "#f0a491",
+        "purpose": "Hover del acento. Solo bajo el cursor, nunca en reposo.",
+        "tonalRamp": ["oklch(0.18 0.05 27)", "oklch(0.26 0.08 27)", "oklch(0.34 0.11 27)", "oklch(0.42 0.14 27)", "oklch(0.53 0.17 27)", "oklch(0.65 0.16 27)", "oklch(0.79 0.12 27)", "oklch(0.92 0.05 27)"]
+      },
+      "on-primary": {
+        "role": "neutral",
+        "displayName": "Sobre Brasa",
+        "canonical": "#faf9f6",
+        "darkVariant": "#17130f",
+        "purpose": "Texto sobre el acento: el papel base devuelto como tinta invertida.",
+        "tonalRamp": ["oklch(0.15 0.003 90)", "oklch(0.25 0.003 90)", "oklch(0.40 0.004 90)", "oklch(0.55 0.004 90)", "oklch(0.72 0.005 90)", "oklch(0.86 0.005 90)", "oklch(0.94 0.004 90)", "oklch(0.985 0.004 90)"]
+      },
+      "base": {
+        "role": "neutral",
+        "displayName": "Papel",
+        "canonical": "#faf9f6",
+        "darkVariant": "#141311",
+        "purpose": "Fondo base de la página en tema claro. No es blanco puro.",
+        "tonalRamp": ["oklch(0.15 0.003 90)", "oklch(0.25 0.003 90)", "oklch(0.40 0.004 90)", "oklch(0.55 0.004 90)", "oklch(0.72 0.005 90)", "oklch(0.86 0.005 90)", "oklch(0.94 0.004 90)", "oklch(0.985 0.004 90)"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Papel Sombra",
+        "canonical": "#f0ede8",
+        "darkVariant": "#1c1b19",
+        "purpose": "Bandas band-surface y fondo de los media en carga.",
+        "tonalRamp": ["oklch(0.15 0.003 85)", "oklch(0.25 0.004 85)", "oklch(0.40 0.005 85)", "oklch(0.55 0.006 85)", "oklch(0.72 0.007 85)", "oklch(0.86 0.006 85)", "oklch(0.93 0.005 85)", "oklch(0.965 0.005 85)"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Tinta",
+        "canonical": "#141311",
+        "darkVariant": "#f5f3ef",
+        "purpose": "Texto de cuerpo y titulares; fondo de la página en tema oscuro.",
+        "tonalRamp": ["oklch(0.13 0.002 80)", "oklch(0.20 0.002 80)", "oklch(0.30 0.003 80)", "oklch(0.42 0.004 80)", "oklch(0.56 0.005 80)", "oklch(0.70 0.005 80)", "oklch(0.85 0.004 80)", "oklch(0.96 0.004 80)"]
+      },
+      "ink-dim": {
+        "role": "neutral",
+        "displayName": "Tinta Apagada",
+        "canonical": "#6a6560",
+        "darkVariant": "#a8a29b",
+        "purpose": "Descripciones, lead de contacto, texto legal del footer.",
+        "tonalRamp": ["oklch(0.15 0.005 70)", "oklch(0.23 0.006 70)", "oklch(0.33 0.007 70)", "oklch(0.45 0.008 70)", "oklch(0.56 0.008 70)", "oklch(0.70 0.007 70)", "oklch(0.85 0.006 70)", "oklch(0.96 0.005 70)"]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Filete",
+        "canonical": "#ddd9d0",
+        "darkVariant": "#37332f",
+        "purpose": "Bordes de sección, separadores y subrayados de enlace.",
+        "tonalRamp": ["oklch(0.15 0.003 85)", "oklch(0.26 0.004 85)", "oklch(0.42 0.005 85)", "oklch(0.58 0.006 85)", "oklch(0.74 0.007 85)", "oklch(0.87 0.006 85)", "oklch(0.92 0.005 85)", "oklch(0.955 0.005 85)"]
+      },
+      "cream-warm": {
+        "role": "secondary",
+        "displayName": "Crema Cálido",
+        "canonical": "#e8d5c4",
+        "darkVariant": "#e8d5c4",
+        "purpose": "Tagline del hero y hover del botón crema. Único tono cálido claro.",
+        "tonalRamp": ["oklch(0.16 0.01 80)", "oklch(0.26 0.015 80)", "oklch(0.42 0.025 80)", "oklch(0.58 0.035 80)", "oklch(0.74 0.045 80)", "oklch(0.86 0.04 80)", "oklch(0.92 0.03 80)", "oklch(0.96 0.02 80)"]
+      },
+      "night": {
+        "role": "tertiary",
+        "displayName": "Noche",
+        "canonical": "#0d0b09",
+        "darkVariant": "#0d0b09",
+        "purpose": "Fondo de la placa del hero. La superficie más oscura, reservada al primer viewport.",
+        "tonalRamp": ["oklch(0.12 0.002 70)", "oklch(0.18 0.002 70)", "oklch(0.28 0.003 70)", "oklch(0.40 0.004 70)", "oklch(0.54 0.005 70)", "oklch(0.70 0.005 70)", "oklch(0.86 0.004 70)", "oklch(0.97 0.004 70)"]
+      },
+      "footer-bg": {
+        "role": "neutral",
+        "displayName": "Footer Carbón",
+        "canonical": "#141210",
+        "darkVariant": "#0e0d0c",
+        "purpose": "Fondo del bloque final, más oscuro que cualquier otra superficie.",
+        "tonalRamp": ["oklch(0.12 0.002 60)", "oklch(0.19 0.003 60)", "oklch(0.29 0.004 60)", "oklch(0.41 0.005 60)", "oklch(0.55 0.005 60)", "oklch(0.70 0.005 60)", "oklch(0.86 0.004 60)", "oklch(0.97 0.004 60)"]
+      },
+      "footer-ink": {
+        "role": "neutral",
+        "displayName": "Footer Papel",
+        "canonical": "#cfc9c2",
+        "darkVariant": "#cfc9c2",
+        "purpose": "Texto de enlaces del footer.",
+        "tonalRamp": ["oklch(0.15 0.003 75)", "oklch(0.25 0.004 75)", "oklch(0.40 0.005 75)", "oklch(0.55 0.006 75)", "oklch(0.70 0.006 75)", "oklch(0.84 0.005 75)", "oklch(0.90 0.005 75)", "oklch(0.95 0.004 75)"]
+      },
+      "footer-dim": {
+        "role": "neutral",
+        "displayName": "Footer Apagado",
+        "canonical": "#8f8880",
+        "darkVariant": "#8f8880",
+        "purpose": "Párrafo y legal del footer.",
+        "tonalRamp": ["oklch(0.15 0.004 75)", "oklch(0.23 0.005 75)", "oklch(0.34 0.006 75)", "oklch(0.46 0.006 75)", "oklch(0.58 0.006 75)", "oklch(0.72 0.005 75)", "oklch(0.86 0.005 75)", "oklch(0.96 0.004 75)"]
+      },
+      "footer-line": {
+        "role": "neutral",
+        "displayName": "Footer Filete",
+        "canonical": "#302c28",
+        "darkVariant": "#2a2724",
+        "purpose": "Filetes y subrayados dentro del footer.",
+        "tonalRamp": ["oklch(0.14 0.003 65)", "oklch(0.21 0.004 65)", "oklch(0.31 0.005 65)", "oklch(0.43 0.005 65)", "oklch(0.57 0.005 65)", "oklch(0.71 0.005 65)", "oklch(0.86 0.004 65)", "oklch(0.97 0.004 65)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Wordmark", "purpose": "Solo el wordmark TEMPLE del hero, una letra por span, a todo el ancho." },
+      "headline": { "displayName": "Título de Sección", "purpose": "Títulos de sección y la declaración de la banda manifiesto." },
+      "title": { "displayName": "Título de Elemento", "purpose": "Nombres de producto, accesorio, look y figcaption." },
+      "body": { "displayName": "Cuerpo", "purpose": "Toda la prosa, con anchos máximos declarados en ch." },
+      "label": { "displayName": "Etiqueta", "purpose": "Nav, botones, CTA de producto y marca: mayúsculas tracked." }
+    },
+    "shadows": [
+      { "name": "sello-marca", "value": "0 2px 6px -2px rgba(20,19,17,.45)", "purpose": "Única sombra del sistema: aterriza el sello sobre la nav de vidrio." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(.16,1,.3,1)", "purpose": "Entradas, revelados por clip-path y hover de imagen: la curva con peso del sistema." },
+      { "name": "duration-press", "value": "0.15s", "purpose": "translateY(-2px) de los botones." },
+      { "name": "duration-state", "value": "0.2s", "purpose": "Transiciones de color, borde y fondo en hover/focus." },
+      { "name": "duration-media", "value": "0.6s", "purpose": "Escala 1.05 de la imagen en hover." },
+      { "name": "duration-reveal", "value": "0.8s", "purpose": "clip-path de entrada de cada media." },
+      { "name": "duration-hero", "value": "1.7s", "purpose": "heroZoom de la placa del hero." },
+      { "name": "stagger-item", "value": "0.09s", "purpose": "Retardo escalonado por posición en la grilla (2° y 3° elemento)." },
+      { "name": "stagger-letter", "value": "0.06s", "purpose": "Retardo por letra del wordmark TEMPLE." }
+    ],
+    "breakpoints": [
+      { "name": "wordmark-md", "value": "1100px" },
+      { "name": "rhythm-md", "value": "900px" },
+      { "name": "stack-contact-hero", "value": "860px" },
+      { "name": "wordmark-sm", "value": "700px" },
+      { "name": "mobile", "value": "640px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "CTA principal: se usa para Pedir / Escribir por WhatsApp.",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Pedir por WhatsApp</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.7rem;font-family:var(--font-display,'Archivo Black',sans-serif);font-size:.78rem;line-height:1.5;text-transform:uppercase;letter-spacing:.09em;text-align:center;border:1.5px solid transparent;border-radius:8px;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,transform .15s}.ds-btn:hover{transform:translateY(-2px)}.ds-btn:active{transform:translateY(0)}.ds-btn:focus-visible{outline:2px solid var(--accent,#6e2e24);outline-offset:3px;border-radius:3px}.ds-btn-primary{background:var(--accent,#6e2e24);color:var(--on-accent,#faf9f6)}.ds-btn-primary:hover{background:var(--accent-hi,#8b1a1a)}"
+    },
+    {
+      "name": "Cream Button",
+      "kind": "button",
+      "refersTo": "button-cream",
+      "description": "CTA sólido claro, solo sobre superficie oscura (hero).",
+      "html": "<button class=\"ds-btn ds-btn-cream\">Ver colección</button>",
+      "css": ".ds-btn-cream{background:#faf9f6;color:#141311;border-color:#faf9f6}.ds-btn-cream:hover{background:#e8d5c4;border-color:#e8d5c4}.ds-btn-cream:focus-visible{outline-color:#fff}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Segunda acción del hero: transparente con borde blanco al 55%.",
+      "html": "<button class=\"ds-btn ds-btn-ghost\">Pedir por WhatsApp</button>",
+      "css": ".ds-btn-ghost{background:transparent;border-color:rgba(255,255,255,.55);color:#fff}.ds-btn-ghost:hover{background:rgba(255,255,255,.14);border-color:#fff}.ds-btn-ghost:focus-visible{outline-color:#fff}"
+    },
+    {
+      "name": "Product CTA Chip",
+      "kind": "chip",
+      "refersTo": "product-cta",
+      "description": "Acción de compra dentro de la tarjeta: outline en reposo, se enciende con el hover de la tarjeta.",
+      "html": "<a class=\"ds-cta\" href=\"#\">Pedir por WhatsApp</a>",
+      "css": ".ds-cta{display:inline-flex;align-self:flex-start;padding:.55rem 1.1rem;border:1.5px solid var(--ink,#141311);border-radius:7px;background:transparent;color:var(--ink,#141311);font-family:var(--font-display,'Archivo Black',sans-serif);font-size:.72rem;line-height:1.5;text-transform:uppercase;letter-spacing:.1em;text-decoration:none;transition:background-color .2s,color .2s,border-color .2s}.ds-cta:hover,.ds-cta:focus-visible{background:var(--accent,#6e2e24);border-color:var(--accent,#6e2e24);color:var(--on-accent,#faf9f6)}.ds-cta:focus-visible{outline:2px solid var(--accent,#6e2e24);outline-offset:3px}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Barra sticky en vidrio esmerilado con marca a la izquierda y CTA a la derecha.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-brand\" href=\"#top\"><span class=\"ds-nav-mark\"></span><span>Temple</span></a><ul class=\"ds-nav-links\"><li><a href=\"#coleccion\" aria-current=\"true\">Colección</a></li><li><a href=\"#lookbook\">Lookbook</a></li></ul><a class=\"ds-btn ds-btn-primary ds-btn-sm\" href=\"#\">Pedir</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:clamp(1rem,3vw,2.5rem);min-height:4rem;padding:.7rem 1.25rem;background:rgba(250,249,246,.88);-webkit-backdrop-filter:saturate(150%) blur(14px);backdrop-filter:saturate(150%) blur(14px);border-bottom:1px solid var(--line,#ddd9d0)}.ds-nav-brand{display:flex;align-items:center;gap:.65rem;font-family:var(--font-display,'Archivo Black',sans-serif);font-size:.95rem;text-transform:uppercase;letter-spacing:.16em;color:var(--ink,#141311);text-decoration:none;transition:color .2s}.ds-nav-brand:hover{color:var(--accent,#6e2e24)}.ds-nav-mark{width:34px;height:34px;border-radius:9px;background:var(--accent,#6e2e24);box-shadow:0 2px 6px -2px rgba(20,19,17,.45)}.ds-nav-links{display:flex;align-items:center;gap:clamp(1.25rem,3vw,2.25rem);list-style:none;margin:0;padding:0}.ds-nav-links a{display:block;padding-block:.4rem;font-family:var(--font-display,'Archivo Black',sans-serif);font-size:.74rem;text-transform:uppercase;letter-spacing:.11em;color:var(--ink,#141311);text-decoration:none;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}.ds-nav-links a:hover{color:var(--accent,#6e2e24)}.ds-nav-links a[aria-current]{color:var(--accent,#6e2e24);border-bottom-color:var(--accent,#6e2e24)}.ds-btn-sm{padding:.6rem 1.15rem;font-size:.72rem;letter-spacing:.1em}"
+    },
+    {
+      "name": "Product Card",
+      "kind": "card",
+      "refersTo": "card-media",
+      "description": "Tarjeta de producto: media 4:5 con revelado, cuerpo apilado y CTA empujado al fondo.",
+      "html": "<a class=\"ds-card\" href=\"#\"><span class=\"ds-card-media\"></span><span class=\"ds-card-body\"><h3>Polo</h3><span class=\"ds-card-desc\">La calma de todos los días.</span><span class=\"ds-card-price\">$ 89.000</span><span class=\"ds-cta\">Pedir por WhatsApp</span></span></a>",
+      "css": ".ds-card{display:flex;flex-direction:column;height:100%;border-radius:16px;color:inherit;text-decoration:none}.ds-card:focus-visible{outline:2px solid var(--accent,#6e2e24);outline-offset:6px}.ds-card-media{display:block;position:relative;overflow:hidden;aspect-ratio:4/5;background:var(--surface,#f0ede8);border-radius:16px}.ds-card-media::after{content:\"\";position:absolute;inset:0;background:linear-gradient(140deg,#e8d5c4,#6e2e24);opacity:.9;transition:transform .6s cubic-bezier(.16,1,.3,1)}.ds-card:hover .ds-card-media::after{transform:scale(1.05)}.ds-card-body{display:flex;flex-direction:column;flex:1;gap:.6rem;padding-top:1.15rem}.ds-card-body h3{margin:0;font-family:var(--font-display,'Archivo Black',sans-serif);font-size:1.2rem;font-weight:400;letter-spacing:-.02em}.ds-card-desc{color:var(--ink-dim,#6a6560);font-size:.95rem;line-height:1.45;max-width:34ch}.ds-card-price{font-weight:700;font-size:1.05rem;font-variant-numeric:tabular-nums;letter-spacing:0}.ds-card .ds-cta{margin-top:auto}.ds-card:hover .ds-cta,.ds-card:focus-visible .ds-cta{background:var(--accent,#6e2e24);border-color:var(--accent,#6e2e24);color:var(--on-accent,#faf9f6)}"
+    },
+    {
+      "name": "Accessory Row",
+      "kind": "card",
+      "refersTo": "card-media",
+      "description": "Fila a todo el ancho en tres columnas: media cuadrada de 176px (96px bajo 640px), cuerpo y precio alineado a la derecha. Filete de 1px entre filas; es una lista de precios, no una tarjeta.",
+      "html": "<a class=\"ds-access\" href=\"#\"><span class=\"ds-access-media\"></span><span class=\"ds-access-body\"><h3>Cuadro</h3><span class=\"ds-access-desc\">La frase queda en la pared.</span></span><span class=\"ds-access-price\">$ 42.000</span></a>",
+      "css": ".ds-access{display:grid;grid-template-columns:176px minmax(0,1fr) auto;grid-template-areas:\"media body price\";align-items:center;gap:clamp(1.25rem,3vw,2rem);padding:1.75rem 1rem;margin-inline:-1rem;border-radius:16px;color:inherit;text-decoration:none;transition:background-color .2s}.ds-access+.ds-access{border-top:1px solid var(--line,#ddd9d0)}.ds-access:hover{background:var(--base,#faf9f6)}.ds-access:focus-visible{outline:2px solid var(--accent,#6e2e24);outline-offset:4px}.ds-access-media{grid-area:media;width:100%;aspect-ratio:1;overflow:hidden;background:var(--surface,#f0ede8);border-radius:16px}.ds-access-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1)}.ds-access:hover .ds-access-media img{transform:scale(1.05)}.ds-access-body{grid-area:body;min-width:0}.ds-access-body h3{margin:0;font-family:var(--font-display,'Archivo Black',sans-serif);font-size:1.2rem;font-weight:400;letter-spacing:-.02em}.ds-access-desc{display:block;margin:.35rem 0 0;color:var(--ink-dim,#6a6560);font-size:.95rem;line-height:1.45;max-width:34ch}.ds-access-price{grid-area:price;justify-self:end;font-weight:700;font-size:1.05rem;letter-spacing:0;white-space:nowrap;color:var(--accent,#6e2e24);font-variant-numeric:tabular-nums}@media (max-width:640px){.ds-access{grid-template-columns:96px minmax(0,1fr);grid-template-areas:\"media body\" \"media price\";align-items:start;gap:.4rem 1.15rem;padding:1.35rem .75rem;margin-inline:-.75rem}.ds-access-price{justify-self:start;margin-top:.2rem}}"
+    },
+    {
+      "name": "Manifesto Band",
+      "kind": "custom",
+      "refersTo": "primary",
+      "description": "El único lugar donde el acento inunda el fondo completo: declaración a todo el ancho.",
+      "html": "<section class=\"ds-band\"><p class=\"ds-band-statement\">Diseñado para el rugby, hecho para durar.</p></section>",
+      "css": ".ds-band{background:var(--accent,#6e2e24);color:var(--on-accent,#faf9f6);padding:4.5rem 1.25rem}.ds-band-statement{margin:0;max-width:24ch;font-family:var(--font-display,'Archivo Black',sans-serif);font-size:3.25rem;line-height:1.05;letter-spacing:-.03em;text-wrap:balance}"
+    }
+  ],
+  "narrative": {
+    "northStar": "La Forja",
+    "overview": "Temple no vende ropa deportiva: forja carácter. El sistema se piensa como un taller — tierra cocida, óxido, cuero viejo y papel de estraza — no como una tienda online. La superficie base es crema cálida (papel, no blanco de galería), la tinta es casi negra, y un solo rojo profundo aparece como brasa: se enciende donde hay que actuar y se apaga en el resto. La profundidad se resuelve por capa tonal y por vidrio esmerilado, nunca por sombra difusa: nada flota, todo está apoyado.\n\nLa densidad es media con ritmo de editorial: bloques de sección generosos (104px) separados por bandas de superficie con filete, y dentro de cada bloque grillas auto-ajustadas que se reordenan sin saltos. La tipografía empuja hacia el extremo: Archivo Black en mayúsculas para todo lo que se navega, se acciona o se proclama; Archivo regular para todo lo que se lee. Entre esas dos posturas no hay término medio, y esa dureza es la personalidad.\n\nLa antireferencia está confirmada: no Shopify genérico. Nada de grillas suaves con badges de descuento, sombras de tarjeta a diez sombras, botones pill redondeados ni lenguaje de plantilla de e-commerce. Si una decisión se parece a un template de tienda, está mal hecha.",
+    "keyCharacteristics": [
+      "Papel crema + tinta casi negra + una sola brasa (--accent) que solo se enciende en acciones y en la banda manifiesto.",
+      "Archivo Black en mayúsculas tracked para navegación, botones y precios; Archivo regular para prosa.",
+      "Grillas auto-fit con minmax que nunca muestran huecos ni desbordan: 3 productos, 3 accesorios, 3 looks, footer de 4 columnas.",
+      "Superficies planas; el único material flotante es la nav sticky en vidrio esmerilado.",
+      "Movimiento preciso y con peso: cubic-bezier(.16,1,.3,1), entradas con blur+rise, revelados por clip-path con stagger de 0.09s."
+    ],
+    "rules": [
+      { "name": "The Ember Band Rule", "body": "El acento inunda exactamente una banda a todo el ancho del sitio: el manifiesto \"Diseñado para el rugby, hecho para durar\". En cualquier otro lugar es una chispa —botón, precio, nav activa, anillo de foco, ::selection— y jamás un fondo de tarjeta ni un color de texto corrido.", "section": "colors" },
+      { "name": "The Night Rule", "body": "--night es la superficie más oscura del sistema y está reservada al hero. Ninguna otra sección baja a ese valor: si algo que no es el primer viewport se pone tan oscuro como la noche, compite con el hero.", "section": "colors" },
+      { "name": "The Uppercase Rule", "body": "Todo lo que el visitante puede tocar o por donde puede moverse va en Archivo Black mayúsculas con tracking entre .09em y .16em: nav, botones, CTA, títulos de footer, marca. La prosa jamás se pone en mayúsculas, y un título de sección jamás se pone en minúsculas.", "section": "typography" },
+      { "name": "The Full-Width Wordmark Rule", "body": "TEMPLE siempre ocupa el 100% del contenedor, letra por letra separada, sin reordenar ni escalerar según el contenido. El tamaño solo baja por breakpoint: 6rem → 4.75rem (≤1100px) → 3.5rem (≤700px).", "section": "typography" },
+      { "name": "The Glass Rule", "body": "La nav sticky es el único material translúcido del sistema: rgba(250,249,246,.88) en tema claro / rgba(20,19,17,.88) en oscuro, con backdrop-filter:saturate(150%) blur(14px) y filete inferior de 1px. Si otro elemento quiere vidrio, le falta una razón.", "section": "elevation" },
+      { "name": "The Tonal Layer Rule", "body": "La jerarquía de planos se lee por color, no por sombra: --surface con filete separa bloques, --base deja respirar, el footer cierra. Los alternados band-surface son el mecanismo de ritmo, no decoración.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do resolver jerarquía con capa tonal (--surface + filete) antes que con sombra; la única sombra permitida es la del sello de nav.",
+      "Do mantener los anchos de lectura declarados: 54ch lede, 34ch descripción de producto, 36ch caption, 38ch footer.",
+      "Do usar las grillas auto-fit con minmax y min(100%,N) para que nunca aparezca un hueco ni desborde en tablet.",
+      "Do dejar que el acento inunde solo la banda manifiesto; en el resto es botón, precio, nav activa o foco.",
+      "Do respetar prefers-reduced-motion: el sistema ya anula animaciones y transiciones, no reintroducir movimiento condicional sin esa guarda.",
+      "Do dar foco visible a todo lo accionable: 2px sólido, offset 3px, #fff sobre el hero."
+    ],
+    "donts": [
+      "Don't usar el acento como fondo de tarjeta, de sección ni de texto corrido fuera de la banda manifiesto.",
+      "Don't añadir sombras de tarjeta, elevación en reposo ni border-radius:50% / pill: no existen en este sistema.",
+      "Don't pasar los titulares de sección a Archivo regular ni bajar los labels de mayúsculas.",
+      "Don't poner scrim sobre texto en mobile: el hero apilado usa fondo sólido, no degradado encima de la copia.",
+      "Don't mover el clip-path del <img> al contenedor .reveal: el elemento deja de ser observable y el media queda invisible.",
+      "Don't acercarse a un template de tienda (anti-referencia confirmada): sin badges de descuento, sin grilla de ofertas, sin botones pill."
+    ]
+  }
+}
