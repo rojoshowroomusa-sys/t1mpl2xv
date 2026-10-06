@@ -950,20 +950,23 @@ h1,h2,h3,h4{
   }
 
   /* ─────────────────────────────────────────────
-     Selector de variantes: color · talle · cantidad.
-     Arma el mensaje de WhatsApp con lo elegido.
-     Para cambiar o sumar variantes, editá SÓLO el
-     arreglo `colores` (y `talles`) de cada producto
-     en VARIANTES. Sin JS la tarjeta conserva su
-     enlace original de WhatsApp.
+     Variantes del catálogo: color · talle · cantidad.
+     COLORES y TALLES valen para todo el catálogo.
+     Para que un producto se aparte, poné el arreglo
+     literal en su línea: colores: ['Rojo'] o talles: [].
+     Arma el mensaje de WhatsApp con lo elegido; los
+     precios jamás se tocan. Sin JS la tarjeta conserva
+     su enlace original de WhatsApp.
      ───────────────────────────────────────────── */
+  var COLORES = ['Rojo', 'Blanco', 'Negro', 'Melange Francia'];
+  var TALLES  = ['S', 'M', 'L', 'XL', 'XXL', '3XL'];
   var VARIANTES = {
-    polo:    { pedido: 'Quiero el Polo de Temple',    colores: ['Crudo'],       talles: ['S', 'M', 'L', 'XL'] },
-    hoodie:  { pedido: 'Quiero el Hoodie de Temple',  colores: ['Vino'],        talles: ['S', 'M', 'L', 'XL'] },
-    campera: { pedido: 'Quiero la Campera de Temple', colores: ['Verde oliva'], talles: ['S', 'M', 'L', 'XL'] },
-    cuadro:  { pedido: 'Quiero el Cuadro de Temple',  colores: ['Marco crudo'], talles: [] },
-    cartas:  { pedido: 'Quiero las Cartas de Temple', colores: ['Vino'],        talles: [] },
-    taza:    { pedido: 'Quiero la Taza de Temple',    colores: ['Blanca'],      talles: [] }
+    polo:    { pedido: 'Quiero el Polo de Temple',    colores: COLORES, talles: TALLES },
+    hoodie:  { pedido: 'Quiero el Hoodie de Temple',  colores: COLORES, talles: TALLES },
+    campera: { pedido: 'Quiero la Campera de Temple', colores: COLORES, talles: TALLES },
+    cuadro:  { pedido: 'Quiero el Cuadro de Temple',  colores: COLORES, talles: [] },
+    cartas:  { pedido: 'Quiero las Cartas de Temple', colores: COLORES, talles: [] },
+    taza:    { pedido: 'Quiero la Taza de Temple',    colores: COLORES, talles: [] }
   };
 
   function chipGroup(legendTxt, name, values, current, onPick) {

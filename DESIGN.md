@@ -224,7 +224,7 @@ Bordes: **1.5px** para los controles accionables (`.btn`, `.product-cta`), **1px
 - **Chip:** borde 1.5px `--line`, esquina 7px (misma medida que el CTA), Label `.78rem`/`.09em` en mayúsculas. Seleccionado se llena de acento con texto sobre brasa; foco con anillo 2px offset 3px. **Los chips son tipográficos**: no hay muestras de color, no se introducen hex nuevos ni círculos.
 - **Cantidad:** mínimo 1 (el `−` se deshabilita arriba del piso), sin tope. El selector **no calcula totales ni descuentos**: sólo elige.
 - **Mensaje:** `Quiero el Polo de Temple · Color: Crudo · Talle: M · Cantidad: 2`, codificado en el `href` de `wa.me`. Los precios nunca entran al mensaje ni se multiplican.
-- **Variantes hoy:** prendas con Color + Talle (`S·M·L·XL`) + Cantidad; accesorios con Color + Cantidad. El arreglo `colores` de cada producto es el único lugar para sumar variantes.
+- **Variantes hoy:** los 6 productos comparten `Rojo · Blanco · Negro · Melange Francia`; las prendas suman Talle `S·M·L·XL·XXL·3XL` y los accesorios van sin talle (sólo Color + Cantidad). `COLORES` y `TALLES` son los únicos lugares para cambiar variantes; un producto puntual puede declarar su arreglo literal.
 
 ### Cards / Containers
 - **Corner Style:** 16px en media y en el contenedor del producto.
